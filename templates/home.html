@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}"/>
+    <title>PowerPulse - Home</title>
+{% endblock %}
+
+{% block content %}
+
+    <!-- Main Content Section -->
+    <main class="main-content my-5">
+        <!-- Introduction Banner -->
+        <section class="section-intro">
+            <div class="container">
+                <div class="intro-banner-wrap">
+                    <img class="rounded" src="{% static 'images/banners/1.jpg' %}" alt="Healthy Asian woman doing squats"/>
+                </div>
+            </div>
+        </section>
+        <!-- End Introduction Banner -->
+
+        <!-- Popular Products Section -->
+        <section class="products">
+            <div class="container">
+                <div class="section-header d-flex justify-content-between align-items-center">
+                    <h5 class="d-inline m-0">Popular Products</h5>
+                    <a href="{% url 'store' %}" class="btn btn-outline-primary d-inline">See all</a>
+                </div>
+                <!-- Product Cards -->
+                <div class="row mt-3">
+                    <!-- Product 1 -->
+                    <div class="col-md-3 mb-3">
+                        <a href="{% url 'detailproduct' %}" class="img-link">
+                            <div class="card card-product">
+                                <div class="img-wrap">
+                                    <img class="rounded-top" style="width: 220px; height: auto;"
+                                         src="{% static 'images/items/1.jpg' %}"
+                                         alt="Optimum Nutrition Whey Protein Gold 5 LBS"/>
+                                </div>
+                                <div class="card-body p-2">
+                                    <div class="fix-height">
+                                        <span class="price">THB 1200</span>
+                                        <p class="card-text">Optimum Nutrition Whey Protein Gold 5 LBS</p>
+                                    </div>
+                                    <div class="btn-product d-grid">
+                                        <a href="{% url 'cart' %}" class="btn btn-primary btn-add-to-cart">Add to
+                                            cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div> <!-- End Product 1 -->
+                </div><!-- End Product Cards -->
+            </div><!-- End container -->
+        </section><!-- End Popular Products Section -->
+    </main><!-- End Main Content Section -->
+{% endblock %}

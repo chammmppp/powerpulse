@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+    <title>PowerPulse - Cart</title>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <main class="col-md-9">
+                <!-- Item -->
+                <article class="card card-body mb-3">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <figure class="itemside d-flex my-0">
+                                <div class="aside">
+                                    <img alt="Shirt product image" src="{% static 'images/items/2.jpg' %}" class="border img-sm">
+                                </div>
+                                <figcaption class="info mx-3 d-flex flex-column">
+                                    <span class="text-muted">Wears</span>
+                                    <a href="#" class="title">Jeans bag for hiking</a>
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div class="col">
+                            <div class="input-group input-spinner">
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-light rounded-end-0" type="button" id="button-plus">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                                <input type="text" class="form-control" value="1">
+                                <div class="input-group-append">
+                                    <button class="btn btn-light rounded-start-0" type="button" id="button-minus">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="price h5">$180.00</div>
+                        </div>
+                        <div class="col flex-grow-0 text-right">
+                            <a href="#" class="btn btn-light"><i class="fa fa-times"></i></a>
+                        </div>
+                    </div>
+                </article>
+                <!-- End item -->
+
+                <!-- Item -->
+                <article class="card card-body mb-3">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <figure class="itemside d-flex my-0">
+                                <div class="aside">
+                                    <img alt="Shirt product image" src="{% static 'images/items/3.jpg' %}" class="border img-sm">
+                                </div>
+                                <figcaption class="info mx-3 d-flex flex-column">
+                                    <span class="text-muted">Wears</span>
+                                    <a href="#" class="title">Jeans bag for hiking</a>
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div class="col">
+                            <div class="input-group input-spinner">
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-light rounded-end-0" type="button" id="button-plus">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                                <input type="text" class="form-control" value="1">
+                                <div class="input-group-append">
+                                    <button class="btn btn-light rounded-start-0" type="button" id="button-minus">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="price h5">$180.00</div>
+                        </div>
+                        <div class="col flex-grow-0 text-right">
+                            <a href="#" class="btn btn-light"><i class="fa fa-times"></i></a>
+                        </div>
+                    </div>
+                </article>
+                <!-- End item -->
+            </main>
+
+            <aside class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="input-group mb-3">
+                        </div>
+                        <dl class="dlist-align">
+                            <dt>Subtotal:</dt>
+                            <dd class="text-right">$938.50</dd>
+                        </dl>
+                        <dl class="dlist-align">
+                            <dt>Discount:</dt>
+                            <dd class="text-right text-danger">10%</dd>
+                        </dl>
+                        <dl class="dlist-align">
+                            <dt>Grand Total:</dt>
+                            <dd class="text-right text-dark"><strong>$948.50</strong></dd>
+                        </dl>
+                        <hr>
+                        <div class="d-grid gap-2">
+                            <a href="#" class="btn btn-primary btn-block">Purchase</a>
+                            <a href="#" class="btn btn-light btn-block">Continue Shopping</a>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+{% endblock %}

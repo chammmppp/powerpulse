@@ -1,0 +1,166 @@
+{% extends 'base.html' %}  <!-- ขยายเทมเพลตพื้นฐาน -->
+
+{% load static %}  <!-- โหลดเทมเพลตแท็กของ static -->
+
+{% block title %}
+    <!-- บล็อคสำหรับ title ของหน้า -->
+    <link rel="stylesheet" href="{% static '/css/store.css' %}"/>  <!-- ลิงค์สไตล์ชีต -->
+    <title>PowerPulse - Store</title>
+{% endblock %}
+
+{% block content %}
+    <!-- บล็อคสำหรับเนื้อหาของหน้า -->
+    <section class="section-content">
+        <div class="container my-5">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="card mb-3">
+                        <div class="card-body py-0">
+                            <div class="row">
+                                <main class="col-md-9 d-flex flex-row">
+                                    <!-- แสดงรายละเอียดของสินค้า -->
+                                    <div class="img-product">
+                                         <!-- รูปภาพสินค้า -->
+                                        <img
+                                                src="{% static '/images/items/1.jpg' %}"
+                                                alt=""
+                                                style="max-height: 220px; width: auto"
+                                        />
+                                    </div>
+                                    <div class="py-3">
+                                        <a href="" class="h5 text-link">Some text in here</a>  <!-- ลิงค์ไปยังรายละเอียดเพิ่มเติมของสินค้า -->
+
+                                        <p>
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                            Quidem, commodi. Molestias labore fuga possimus cum sint
+                                            dolorum unde deleniti modi.!  <!-- คำอธิบายของสินค้า -->
+                                        </p>
+                                    </div>
+                                </main>
+                                <article class="col-md-3 card-product-list py-3">
+                                    <!-- แสดงราคาสินค้าและปุ่มสำหรับซื้อหรือเพิ่มไปยัง Wishlist -->
+                                    <var class="price h5">THB 299</var>
+                                    <div class="quantity-product"></div>
+                                    <div class="d-flex flex-column">
+                                        <a href="" class="btn btn-primary mt-5 mb-2">Buy now</a>  <!-- ปุ่มซื้อทันที -->
+                                        <a href="" class="btn btn-add-to-cart">
+                                            <i class="bi bi-heart-fill me-2"></i>Add to wishlist</a>  <!-- ปุ่มเพิ่มไปยัง Wishlist -->
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sidebar -->
+                <div class="col-md-3">
+                    <aside>
+                        <div class="card p-3">
+                            <article>
+                                <div class="header">
+                                    <article class="filter-group">
+                                        <!-- ฟิลเตอร์สำหรับเลือกหมวดหมู่สินค้า -->
+                                        <div class="header">
+                                            <a
+                                                    class=""
+                                                    href=""
+                                                    data-bs-toggle="collapse"
+                                                    data-bs-target="#collapse-aside"
+                                                    style="text-decoration: none"
+                                            >
+                                                <div class="title-container">
+                                                    <h6 class="title">Categories</h6>
+                                                    <i class="bi bi-chevron-down"></i>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div
+                                                class="filter-content collapse show"
+                                                id="collapse-aside"
+                                        >
+                                            <div class="body">
+                                                <form action="" class="my-3">
+                                                    <div class="input-group">
+                                                        <input
+                                                                type="text"
+                                                                class="form-control"
+                                                                placeholder="Search"
+                                                        />  <!-- กล่องค้นหาสินค้า -->
+                                                        <div class="input-group-append">
+                                                            <button
+                                                                    class="btn btn-primary rounded-start-0"
+                                                                    type="button"
+                                                            >
+                                                                <i class="bi bi-search"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                                <ul class="list-menu">
+                                                    <!-- รายการหมวดหมู่สินค้า -->
+                                                    <li>
+                                                        <a href="" class="link-category">Clothes</a>
+                                                    </li>
+                                                    <li><a href="" class="link-category">Shoes</a></li>
+                                                    <li>
+                                                        <a href="" class="link-category">Whey Proteins</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                            </article>
+
+                            <article>
+                                <div class="header">
+                                    <article class="filter-group">
+                                        <!-- ฟิลเตอร์สำหรับเลือกช่วงราคาสินค้า -->
+                                        <div class="header">
+                                            <a
+                                                    class=""
+                                                    href=""
+                                                    data-bs-toggle="collapse"
+                                                    data-bs-target="#collapse-aside-price"
+                                                    style="text-decoration: none"
+                                            >
+                                                <div class="title-container">
+                                                    <h6 class="title">Price</h6>
+                                                    <i class="bi bi-chevron-down"></i>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div
+                                                class="filter-content collapse show"
+                                                id="collapse-aside-price"
+                                        >
+                                            <div class="body">
+                                                <form action="" class="my-3">
+                                                    <input type=range class="form-range">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <label>Min</label>
+                                                            <input type="number" class="form-control"
+                                                                   placeholder="&#3647;0">  <!-- กล่องกรอกค่าราคาต่ำสุด -->
+                                                        </div>
+                                                        <div class="col">
+                                                            <label>Max</label>
+                                                            <input type="number" class="form-control"
+                                                                   placeholder="&#3647;10,000">  <!-- กล่องกรอกค่าราคาสูงสุด -->
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                                <div class="d-grid">
+                                                    <button class="btn btn-primary btn-block">Apply</button>  <!-- ปุ่มสำหรับใช้ฟิลเตอร์ราคา -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                            </article>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
