@@ -1,44 +1,42 @@
 from django.shortcuts import render
-from django.template import loader
-
-from django.http import HttpResponse
+from store.models import Product
 
 
 def home(request):
-    template = loader.get_template('home.html')
-    return HttpResponse(template.render())
+    popular_products = Product.objects.all().filter(is_trending=True)
+    context = {
+        'popular_products': popular_products,
+    }
+    return render(request, 'home.html', context)
 
 
 def cart(request):
-    template = loader.get_template('cart.html')
-    return HttpResponse(template.render())
+    return render(request, 'cart.html')
 
 
 def checkout(request):
-    template = loader.get_template('checkout.html')
-    return HttpResponse(template.render())
+    return render(request, 'checkout.html')
 
 
 def detailproduct(request):
-    template = loader.get_template('detailproduct.html')
-    return HttpResponse(template.render())
+    return render(request, 'detailproduct.html')
 
 
 def login(request):
-    template = loader.get_template('login.html')
-    return HttpResponse(template.render())
+    return render(request, 'login.html')
 
 
 def signup(request):
-    template = loader.get_template('signup.html')
-    return HttpResponse(template.render())
+    return render(request, 'signup.html')
 
 
 def profile(request):
-    template = loader.get_template('profile.html')
-    return HttpResponse(template.render())
+    return render(request, 'profile.html')
 
 
 def store(request):
-    template = loader.get_template('store.html')
-    return HttpResponse(template.render())
+    products = Product.objects.all().filter(is_available=True)
+    context = {
+        'products': products,
+    }
+    return render(request, 'store.html', context)

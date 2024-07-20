@@ -1,64 +1,53 @@
-{% extends 'base.html' %}  <!-- ขยายเทมเพลตพื้นฐาน -->
+{% extends 'base.html' %}
 
-{% load static %}  <!-- โหลดเทมเพลตแท็กของ static -->
+{% load static %}
 
 {% block title %}
-    <!-- บล็อคสำหรับ title ของหน้า -->
-    <link rel="stylesheet" href="{% static '/css/store.css' %}"/>  <!-- ลิงค์สไตล์ชีต -->
+    <link rel="stylesheet" href="{% static '/css/store.css' %}"/>
     <title>PowerPulse - Store</title>
 {% endblock %}
 
 {% block content %}
-    <!-- บล็อคสำหรับเนื้อหาของหน้า -->
-    <section class="section-content">
-        <div class="container my-5">
+    <section class="section-content my-5 py-5">
+        <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                    <div class="card mb-3">
-                        <div class="card-body py-0">
-                            <div class="row">
-                                <main class="col-md-9 d-flex flex-row">
-                                    <!-- แสดงรายละเอียดของสินค้า -->
-                                    <div class="img-product">
-                                         <!-- รูปภาพสินค้า -->
-                                        <img
-                                                src="{% static '/images/items/1.jpg' %}"
-                                                alt=""
-                                                style="max-height: 220px; width: auto"
-                                        />
+                    <div class="row">
+                        {% for product in products %}
+                            <div class="col-md-4 mb-3">
+                                <a href="{% url 'detailproduct' %}" class="img-link"></a>
+                                <div class="card card-product">
+                                    <a href="/detailproduct/" class="img-link">
+                                        <div class="img-wrap">
+                                            <img class="rounded-top" style="width: 220px; height: auto;"
+                                                 src="{{ product.images.url }}"
+                                                 alt="Optimum Nutrition Whey Protein Gold 5 LBS">
+                                        </div>
+                                    </a>
+                                    <div class="card-body p-2"><a href="{% url 'detailproduct' %}" class="img-link">
+                                        <div class="fix-height">
+                                            <span class="price">THB {{ product.price }}</span>
+                                            <p class="card-text">{{ product.product_name }}</p>
+                                        </div>
+                                    </a>
+                                        <div class="btn-product d-grid">
+                                            <a href="{% url 'detailproduct' %}" class="img-link"></a>
+                                            <a href="/cart/" class="btn btn-primary btn-add-to-cart">Add to cart</a>
+                                        </div>
                                     </div>
-                                    <div class="py-3">
-                                        <a href="" class="h5 text-link">Some text in here</a>  <!-- ลิงค์ไปยังรายละเอียดเพิ่มเติมของสินค้า -->
-
-                                        <p>
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                            Quidem, commodi. Molestias labore fuga possimus cum sint
-                                            dolorum unde deleniti modi.!  <!-- คำอธิบายของสินค้า -->
-                                        </p>
-                                    </div>
-                                </main>
-                                <article class="col-md-3 card-product-list py-3">
-                                    <!-- แสดงราคาสินค้าและปุ่มสำหรับซื้อหรือเพิ่มไปยัง Wishlist -->
-                                    <var class="price h5">THB 299</var>
-                                    <div class="quantity-product"></div>
-                                    <div class="d-flex flex-column">
-                                        <a href="" class="btn btn-primary mt-5 mb-2">Buy now</a>  <!-- ปุ่มซื้อทันที -->
-                                        <a href="" class="btn btn-add-to-cart">
-                                            <i class="bi bi-heart-fill me-2"></i>Add to wishlist</a>  <!-- ปุ่มเพิ่มไปยัง Wishlist -->
-                                    </div>
-                                </article>
+                                </div>
                             </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
+
                 <!-- Sidebar -->
                 <div class="col-md-3">
-                    <aside>
+                    <aside class="">
                         <div class="card p-3">
                             <article>
                                 <div class="header">
                                     <article class="filter-group">
-                                        <!-- ฟิลเตอร์สำหรับเลือกหมวดหมู่สินค้า -->
                                         <div class="header">
                                             <a
                                                     class=""
@@ -84,7 +73,7 @@
                                                                 type="text"
                                                                 class="form-control"
                                                                 placeholder="Search"
-                                                        />  <!-- กล่องค้นหาสินค้า -->
+                                                        />
                                                         <div class="input-group-append">
                                                             <button
                                                                     class="btn btn-primary rounded-start-0"
@@ -114,7 +103,6 @@
                             <article>
                                 <div class="header">
                                     <article class="filter-group">
-                                        <!-- ฟิลเตอร์สำหรับเลือกช่วงราคาสินค้า -->
                                         <div class="header">
                                             <a
                                                     class=""
@@ -140,17 +128,17 @@
                                                         <div class="col">
                                                             <label>Min</label>
                                                             <input type="number" class="form-control"
-                                                                   placeholder="&#3647;0">  <!-- กล่องกรอกค่าราคาต่ำสุด -->
+                                                                   placeholder="&#3647;0">
                                                         </div>
                                                         <div class="col">
                                                             <label>Max</label>
                                                             <input type="number" class="form-control"
-                                                                   placeholder="&#3647;10,000">  <!-- กล่องกรอกค่าราคาสูงสุด -->
+                                                                   placeholder="&#3647;10,000">
                                                         </div>
                                                     </div>
                                                 </form>
                                                 <div class="d-grid">
-                                                    <button class="btn btn-primary btn-block">Apply</button>  <!-- ปุ่มสำหรับใช้ฟิลเตอร์ราคา -->
+                                                    <button class="btn btn-primary btn-block">Apply</button>
                                                 </div>
                                             </div>
                                         </div>
