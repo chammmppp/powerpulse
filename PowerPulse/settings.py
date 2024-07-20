@@ -120,6 +120,11 @@ STATICFILES_DIRS = [
     'PowerPulse/static',
 ]
 
+#Media files configuration
+#To make admin save the image you've to do this
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR /'media'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 

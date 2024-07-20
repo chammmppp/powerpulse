@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import path
 
 from PowerPulse import views
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,4 +31,4 @@ urlpatterns = [
     path('signup/', views.signup, name='signup'),
     path('profile/', views.profile, name='profile'),
     path('store/', views.store, name='store'),
-]
+] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
