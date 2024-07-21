@@ -25,9 +25,9 @@
                                         </div>
                                     </a>
                                     <div class="card-body p-2"><a href="{% url 'detailproduct' %}" class="img-link">
-                                        <div class="fix-height">
+                                        <div class="fix-height mb-2">
+                                            <p class="card-text fw-bold m-0 p-0 ">{{ product.product_name }}</p>
                                             <span class="price">THB {{ product.price }}</span>
-                                            <p class="card-text">{{ product.product_name }}</p>
                                         </div>
                                     </a>
                                         <div class="btn-product d-grid">
@@ -67,32 +67,14 @@
                                                 id="collapse-aside"
                                         >
                                             <div class="body">
-                                                <form action="" class="my-3">
-                                                    <div class="input-group">
-                                                        <input
-                                                                type="text"
-                                                                class="form-control"
-                                                                placeholder="Search"
-                                                        />
-                                                        <div class="input-group-append">
-                                                            <button
-                                                                    class="btn btn-primary rounded-start-0"
-                                                                    type="button"
-                                                            >
-                                                                <i class="bi bi-search"></i>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </form>
                                                 <ul class="list-menu">
-                                                    <!-- รายการหมวดหมู่สินค้า -->
-                                                    <li>
-                                                        <a href="" class="link-category">Clothes</a>
-                                                    </li>
-                                                    <li><a href="" class="link-category">Shoes</a></li>
-                                                    <li>
-                                                        <a href="" class="link-category">Whey Proteins</a>
-                                                    </li>
+                                                    {% for category in categories %}
+
+                                                        <li>
+                                                            <a href=""
+                                                               class="link-category">{{ category.category_name }}</a>
+                                                        </li>
+                                                    {% endfor %}
                                                 </ul>
                                             </div>
                                         </div>
