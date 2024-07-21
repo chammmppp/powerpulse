@@ -16,10 +16,11 @@ def store(request, category_slug=None):
     else:
         products = Product.objects.all().filter(is_available=True)
 
+    category_all = Category.objects.all()
+
     # products = Product.objects.all().filter(is_available=True)
-    # categories = Category.objects.all()
     context = {
         'products': products,
-        # 'categories': categories,
+        'categories': category_all,
     }
     return render(request, 'store.html', context)
