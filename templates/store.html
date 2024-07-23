@@ -68,9 +68,11 @@
                                         >
                                             <div class="body">
                                                 <ul class="list-menu">
-                                                    {% for category in categories %}
+                                                    <a href="{% url 'store' %}"
+                                                       class="link-category">All Products</a>
+                                                    {% for category in links %}
                                                         <li>
-                                                            <a href=""
+                                                            <a href="{{ category.get_url }}"
                                                                class="link-category">{{ category.category_name }}</a>
                                                         </li>
                                                     {% endfor %}
