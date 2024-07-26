@@ -11,36 +11,6 @@
     <section class="section-content my-5 py-5">
         <div class="container">
             <div class="row">
-                <div class="col-md-9">
-                    <div class="row">
-                        {% for product in products %}
-                            <div class="col-md-4 mb-3">
-                                <a href="{% url 'detailproduct' %}" class="img-link"></a>
-                                <div class="card card-product">
-                                    <a href="/detailproduct/" class="img-link">
-                                        <div class="img-wrap">
-                                            <img class="rounded-top" style="width: 220px; height: auto;"
-                                                 src="{{ product.images.url }}"
-                                                 alt="Optimum Nutrition Whey Protein Gold 5 LBS">
-                                        </div>
-                                    </a>
-                                    <div class="card-body p-2"><a href="{% url 'detailproduct' %}" class="img-link">
-                                        <div class="fix-height mb-2">
-                                            <p class="card-text fw-bold m-0 p-0 ">{{ product.product_name }}</p>
-                                            <span class="price">THB {{ product.price }}</span>
-                                        </div>
-                                    </a>
-                                        <div class="btn-product d-grid">
-                                            <a href="{% url 'detailproduct' %}" class="img-link"></a>
-                                            <a href="/cart/" class="btn btn-primary btn-add-to-cart">Add to cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
-                </div>
-
                 <!-- Sidebar -->
                 <div class="col-md-3">
                     <aside class="">
@@ -130,6 +100,35 @@
                             </article>
                         </div>
                     </aside>
+                </div>
+
+                <div class="col-md-9">
+                    <div class="row">
+                        {% for product in products %}
+                            <div class="col-md-4 mb-3">
+                                <div class="card card-product">
+                                    <a href="{{ product.get_url }}" class="img-link">
+                                        <div class="img-wrap">
+                                            <img class="rounded-top" style="width: 220px; height: auto;"
+                                                 src="{{ product.images.url }}"
+                                                 alt="Optimum Nutrition Whey Protein Gold 5 LBS">
+                                        </div>
+                                    </a>
+                                    <div class="card-body p-2"><a href="{{ product.get_url }}" class="img-link">
+                                        <div class="fix-height mb-2">
+                                            <p class="card-text  m-0 p-0 ">{{ product.product_name }}</p>
+                                            <span class="price">&#3647;{{ product.price }}</span>
+                                        </div>
+                                    </a>
+                                        <div class="btn-product d-grid">
+                                            <a href="{{ product.get_url }}" class="img-link"></a>
+                                            <a href="/cart/" class="btn btn-primary btn-add-to-cart">Add to cart</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>

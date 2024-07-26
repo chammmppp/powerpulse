@@ -33,7 +33,7 @@
                 <!-- Product 1 -->
                 {% for popular_product in popular_products %}
                 <div class="col-md-3 mb-3">
-                    <a href="{% url 'detailproduct' %}" class="img-link">
+                    <a href="{{ popular_product.get_url }}" class="img-link">
                         <div class="card card-product">
                             <div class="img-wrap">
                                 <img class="rounded-top" style="width: 220px; height: auto;"
@@ -41,9 +41,9 @@
                                      alt="Optimum Nutrition Whey Protein Gold 5 LBS"/>
                             </div>
                             <div class="card-body p-2">
-                                <div class="fix-height">
-                                    <p class="card-text">{{ popular_product.product_name }}</p>
-                                    <span class="price">THB {{ popular_product.price }}</span>
+                                <div class="fix-height mb-2">
+                                    <p class="card-text m-0 p-0">{{ popular_product.product_name }}</p>
+                                    <span class="price">&#3647;{{ popular_product.price }}</span>
                                 </div>
                                 <div class="btn-product d-grid">
                                     <a href="{% url 'cart' %}" class="btn btn-primary btn-add-to-cart">Add to

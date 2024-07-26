@@ -18,8 +18,8 @@ def checkout(request):
     return render(request, 'checkout.html')
 
 
-def detailproduct(request):
-    return render(request, 'detailproduct.html')
+# def product_detail(request):
+#     return render(request, 'product_detail.html')
 
 
 def login(request):

@@ -25,10 +25,9 @@
 {#Nav-bar#}
 {% include 'includes/navbar.html' %}
 
-<main style="min-height: 100vh;">
-    {% block content %}
-    {% endblock %}
-</main>
+{% block content %}
+{% endblock %}
+
 {% include 'includes/footer.html' %}
 
 {# Bootstrap JS Bundle #}
