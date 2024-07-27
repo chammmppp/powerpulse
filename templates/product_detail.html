@@ -90,11 +90,15 @@
                         </div>
                     </div>
                     <!-- Buttons for buying or adding the product to the cart -->
+                    {% if single_product.stock <= 0 %}
+                    <h5 class="text-danger">Out of stock</h5>
+                    {% else %}
                     <a href="#" class="btn btn-primary">Buy now</a>
                     <a href="#" class="btn btn-outline-primary">
                         <span class="text">Add to cart</span>
                         <i class="fas fa-shopping-cart"></i>
                     </a>
+                    {% endif %}
                 </article>
             </main>
         </div>
