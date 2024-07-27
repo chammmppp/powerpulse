@@ -2,102 +2,102 @@
 {% load static %}
 
 {% block title %}
-    <!-- Including the CSS file for the product detail page -->
-    <link rel="stylesheet" href="{% static 'css/detailproduct.css' %}">
-    <title>PowerPulse - Product detail</title>
+<!-- Including the CSS file for the product detail page -->
+<link rel="stylesheet" href="{% static 'css/product_detail.css' %}">
+<title>PowerPulse - Product detail</title>
 {% endblock %}
 
 {% block content %}
-    <!-- Main container for the product detail page content -->
-    <div class="container my-5 py-5">
-        <div class="card">
-            <div class="row no-gutters">
-                <aside class="col-md-6">
-                    <!-- Section for the main product image -->
-                    <div class="img-big-wrap" >
-                        <a href="#">
-                            <!-- Product image -->
-                            <img class="img-fluid " src="{{ single_product.images.url }}" alt="Product image">
-                        </a>
+<!-- Main container for the product detail page content -->
+<div class="container my-5 py-5">
+    <div class="card">
+        <div class="row no-gutters">
+            <aside class="col-md-6">
+                <!-- Section for the main product image -->
+                <div class="img-big-wrap">
+                    <a href="#">
+                        <!-- Product image -->
+                        <img class="img-fluid " src="{{ single_product.images.url }}" alt="Product image">
+                    </a>
+                </div>
+            </aside>
+            <main class="col-md-6 border-start">
+                <article class="content-body p-4">
+                    <!-- Product title -->
+                    <h2 class="title">{{ single_product.product_name }}</h2>
+                    <!-- Product price -->
+                    <div class="mb-3">
+                        <var class="price h4">&#3647;{{ single_product.price }}</var>
+                        <span class="text-muted">/per piece</span>
                     </div>
-                </aside>
-                <main class="col-md-6 border-start">
-                    <article class="content-body p-4">
-                        <!-- Product title -->
-                        <h2 class="title">{{ single_product.product_name }}</h2>
-                        <!-- Product price -->
-                        <div class="mb-3">
-                            <var class="price h4">&#3647;{{ single_product.price }}</var>
-                            <span class="text-muted">/per piece</span>
-                        </div>
 
-                        <!-- Product description -->
-                        <p>{{ single_product.description }}</p>
+                    <!-- Product description -->
+                    <p>{{ single_product.description }}</p>
 
-                        <!-- Product details -->
-                        <dl class="row">
-                            <dt class="col-sm-3">Items</dt>
-                            <dd class="col-sm-9">Odsy-1000</dd>
+                    <!-- Product details -->
+                    <dl class="row">
+                        <dt class="col-sm-3">Items</dt>
+                        <dd class="col-sm-9">Odsy-1000</dd>
 
-                            <dt class="col-sm-3">Color</dt>
-                            <dd class="col-sm-9">Brown</dd>
-                        </dl>
+                        <dt class="col-sm-3">Color</dt>
+                        <dd class="col-sm-9">Brown</dd>
+                    </dl>
 
-                        <hr>
-                        <!-- Section for selecting quantity and size -->
-                        <div class="row mb-4">
-                            <div class="form-group col-md flex-grow-0">
-                                <!-- Quantity selector -->
-                                <label>Quantity</label>
-                                <div class="col">
-                                    <div class="input-group input-spinner">
-                                        <div class="input-group-prepend">
-                                            <button class="btn btn-light rounded-end-0" type="button" id="button-plus">
-                                                <i class="fa fa-minus"></i>
-                                            </button>
-                                        </div>
-                                        <input type="text" class="form-control" value="1">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-light rounded-start-0" type="button"
-                                                    id="button-minus">
-                                                <i class="fa fa-plus"></i>
-                                            </button>
-                                        </div>
+                    <hr>
+                    <!-- Section for selecting quantity and size -->
+                    <div class="row mb-4">
+                        <div class="form-group col-md flex-grow-0">
+                            <!-- Quantity selector -->
+                            <label>Quantity</label>
+                            <div class="col">
+                                <div class="input-group input-spinner">
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-light rounded-end-0" type="button" id="button-plus">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                    <input type="text" class="form-control" value="1">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-light rounded-start-0" type="button"
+                                                id="button-minus">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group col-md">
-                                <!-- Size selector -->
-                                <label>Select size</label>
-                                <div class="mt-2">
-                                    <!-- Size options -->
-                                    <label class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" name="select_size" checked=""
-                                               class="custom-control-input me-2">
-                                        <div class="custom-control-label">Small</div>
-                                    </label>
+                        </div>
+                        <div class="form-group col-md">
+                            <!-- Size selector -->
+                            <label>Select size</label>
+                            <div class="mt-2">
+                                <!-- Size options -->
+                                <label class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" name="select_size" checked=""
+                                           class="custom-control-input me-2">
+                                    <div class="custom-control-label">Small</div>
+                                </label>
 
-                                    <label class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" name="select_size" class="custom-control-input me-2">
-                                        <div class="custom-control-label">Medium</div>
-                                    </label>
+                                <label class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" name="select_size" class="custom-control-input me-2">
+                                    <div class="custom-control-label">Medium</div>
+                                </label>
 
-                                    <label class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" name="select_size" class="custom-control-input me-2">
-                                        <div class="custom-control-label">Large</div>
-                                    </label>
-                                </div>
+                                <label class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" name="select_size" class="custom-control-input me-2">
+                                    <div class="custom-control-label">Large</div>
+                                </label>
                             </div>
                         </div>
-                        <!-- Buttons for buying or adding the product to the cart -->
-                        <a href="#" class="btn btn-primary"> Buy now </a>
-                        <a href="#" class="btn btn-outline-primary">
-                            <span class="text">Add to cart</span>
-                            <i class="fas fa-shopping-cart"></i>
-                        </a>
-                    </article>
-                </main>
-            </div>
+                    </div>
+                    <!-- Buttons for buying or adding the product to the cart -->
+                    <a href="#" class="btn btn-primary">Buy now</a>
+                    <a href="#" class="btn btn-outline-primary">
+                        <span class="text">Add to cart</span>
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                </article>
+            </main>
         </div>
     </div>
+</div>
 {% endblock %}
