@@ -21,7 +21,7 @@ def store(request, category_slug=None):
     context = {
         'products': products,
     }
-    return render(request, 'store.html', context)
+    return render(request, 'stores/store.html', context)
 
 
 def product_detail(request, category_slug, product_slug):
@@ -33,4 +33,4 @@ def product_detail(request, category_slug, product_slug):
     context = {
         'single_product': single_product,
     }
-    return render(request, 'product_detail.html', context)
+    return render(request, 'stores/product_detail.html', context)

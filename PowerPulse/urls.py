@@ -24,11 +24,10 @@ from django.conf import settings
 urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('', views.home, name='home'),
-                  # path('detailproduct/', views.detailproduct, name='detailproduct'),
-                  path('cart/', views.cart, name='cart'),
                   path('checkout/', views.checkout, name='checkout'),
                   path('login/', views.login, name='login'),
                   path('signup/', views.signup, name='signup'),
                   path('profile/', views.profile, name='profile'),
-                  path('store/', include('store.url')),
+                  path('store/', include('store.urls')),
+                  path('cart/', include('carts.urls')),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
