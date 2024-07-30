@@ -46,7 +46,7 @@
                                     <span class="price">&#3647;{{ popular_product.price }}</span>
                                 </div>
                                 <div class="btn-product d-grid">
-                                    <a href="{% url 'cart' %}" class="btn btn-primary btn-add-to-cart">Add to
+                                    <a href="{% url 'add_cart' popular_product.id %}" class="btn btn-primary btn-add-to-cart">Add to
                                         cart</a>
                                 </div>
                             </div>

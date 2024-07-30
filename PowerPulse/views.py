@@ -14,17 +14,17 @@ def checkout(request):
     return render(request, 'checkout.html')
 
 
-# def product_detail(request):
-#     return render(request, 'product_detail.html')
-
-
 def login(request):
-    return render(request, 'login.html')
+    return render(request, 'register/login.html')
 
 
 def signup(request):
-    return render(request, 'signup.html')
+    return render(request, 'register/signup.html')
 
 
 def profile(request):
-    return render(request, 'profile.html')
+    return render(request, 'profiles/profile.html')
+
+
+def address(request):
+    return render(request, 'profiles/address.html')

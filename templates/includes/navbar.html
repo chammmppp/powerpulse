@@ -13,7 +13,7 @@
                     <a class="nav-link" href="{% url 'profile' %}">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#about">About Us</a>
+                    <a class="nav-link" href="{% url 'store' %}">Store</a>
                 </li>
             </ul>
             <!-- Search Form -->
@@ -22,12 +22,20 @@
                 <button class="btn btn-outline-primary" type="submit">Search</button>
             </form>
             <!-- User Actions -->
-            <div class="d-flex">
+            <div class="d-flex gap-3">
+                {% if 0 == 0 %}
+                <a class="nav-link d-flex flex-column align-items-center" href="{% url 'profile' %}">
+                    <i class="bi bi-person"></i>
+                    <span class="d-block" style="font-size: 10px;">Profile</span>
+                </a>
+                {% else %}
                 <a href="{% url 'login' %}" class="nav-link d-flex flex-column align-items-center">
                     <i class="bi bi-person"></i>
                     <span class="d-block" style="font-size: 10px;">Login</span>
                 </a>
-                <a href="{% url 'cart' %}" class="nav-link d-flex flex-column align-items-center mx-3">
+                {% endif %}
+
+                <a href="{% url 'cart' %}" class="nav-link d-flex flex-column align-items-center ">
                     <i class="bi bi-bag"></i>
                     <span class="d-block" style="font-size: 10px;">My Cart</span>
                 </a>

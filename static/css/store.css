@@ -1,30 +1,23 @@
-.section-content{
-    padding-top: 20px;
-}
-.btn-add-to-cart {
-    border-color: #e4e4e4;
-}
-
-.btn-add-to-cart:hover {
-    border-color: #989898;
-}
-
-.text-link {
+/* Global styles */
+.card-product a {
     text-decoration: none;
+    color: inherit;
 }
 
-.card-product-list {
-    border-left: 1px solid #e4e4e4;
+.btn-add-to-cart {
+    color: #fff !important;
 }
 
-.bi-heart-fill {
-    color: #989898;
+.fix-height {
+    overflow: hidden;
 }
 
-.price {
-    font-style: normal;
+.img-wrap {
+    text-align: center;
+    display: block;
 }
 
+/* Styles for Sidebar */
 .list-menu {
     list-style: none;
     padding: 0;
@@ -39,4 +32,16 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.link-category:hover {
+    color: rgb(13, 110, 253);
+}
+
+.link-category:active {
+    color: rgb(13, 110, 253);
+}
+
+.card-text{
+    font-weight: 600;
 }
