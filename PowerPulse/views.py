@@ -21,10 +21,12 @@ def login(request):
 def signup(request):
     return render(request, 'register/signup.html')
 
-
 def profile(request):
-    return render(request, 'profiles/profile.html')
+    return render(request, 'profiles/profile_layout.html')
 
+def my_account(request):
+    return render(request, 'profiles/my_account.html')
 
 def address(request):
     return render(request, 'profiles/address.html')
+

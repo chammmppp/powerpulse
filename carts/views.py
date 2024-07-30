@@ -5,9 +5,9 @@ from .models import Cart, CartItem
 
 
 def _cart_id(request):
-    cart = request.session.session_key
-    if not cart:
-        cart = request.session.create()
+    cart = request.session.session_key #Get the session key from the user's session data
+    if not cart: # Checks if a session key does not exist.
+        cart = request.session.create() #Create a new session
     return cart
 
 
@@ -19,7 +19,7 @@ def add_cart(request, product_id):
         cart = Cart.objects.create(
             cart_id=_cart_id(request)
         )
-    cart.save()
+    cart.save() # save() is a method in Django to save the current sate of the cart object to the database
 
     try:
         cart_item = CartItem.objects.get(product=product, cart=cart)
