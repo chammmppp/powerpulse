@@ -10,10 +10,9 @@
         <aside class="col-md-3">
             <!--   SIDEBAR   -->
             <ul class="list-group list-unstyled nav">
-                <!--<a class="list-group-item active" data-bs-toggle="pill" href="{% url 'profile' %}">My Account</a>-->
                 <a class="list-group-item" style="" href="{% url 'my_account' %}">My Account</a>
                 <a class="list-group-item" href="{%  url 'address'  %}">Address</a>
-                <a class="list-group-item" href="#">Order History</a>
+                <a class="list-group-item" href="{% url 'history_purchase' %}">Order Purchases</a>
                 <a class="list-group-item" href="#">Favorite Items</a>
             </ul>
             <br>

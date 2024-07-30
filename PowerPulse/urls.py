@@ -31,5 +31,5 @@ urlpatterns = [
                   path('address/', views.address, name='address'),
                   path('store/', include('store.urls')),
                   path('cart/', include('carts.urls')),
-                  path('profile/',views.profile,name='profile'),
+                  path('history_purchase/',views.order_purchases, name='history_purchase')
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

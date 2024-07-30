@@ -1,0 +1,144 @@
+{% extends 'profiles/profile_layout.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>PowerPulse - Order purchases</title>
+{% endblock title %}
+
+{% block subcontent %}
+<aside class="col-md-9">
+    <div class="card px-2">
+        <table class="table table-borderless table-shopping-cart">
+            <thead class="text-muted">
+                <tr class="small text-uppercase">
+                    <th scope="col" class="rounded text-muted">Product</th>
+                    <th scope="col" style="width:120px; " class="text-muted text-center">Quantity</th>
+                    <th scope="col" style="width:120px; " class="text-muted text-center">Price</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td class="col-6">
+                        <figure class="itemside d-flex align-items-center m-0">
+                            <div class="aside"><img src="{% static 'images/items/4.jpg' %}" class="img-sm" width="80"
+                                                    height="80"></div>
+                            <figcaption class="info">
+                                <a href="#" class="title nav-link">Camera Canon EOS M50 Kit</a>
+                                <p class="text-muted small">Matrix: 25 Mpx <br> Brand: Canon</p>
+                            </figcaption>
+                        </figure>
+                    </td>
+                    <td class="col-2 text-center">
+                        <span>1</span>
+                    </td>
+                    <td class="col-4">
+                        <div class="price-wrap text-center d-flex flex-column">
+                            <var class="price fst-normal">$1156.00</var>
+                            <small class="text-muted">$315.20 each</small>
+                        </div>
+                    </td>
+                </tr>
+                <!-- Repeat for other items -->
+            </tbody>
+            <tbody>
+                <tr>
+                    <td>
+                        <figure class="itemside d-flex align-items-center m-0">
+                            <div class="aside"><img src="{% static 'images/items/4.jpg' %}" class="img-sm" width="80"
+                                                    height="80"></div>
+                            <figcaption class="info">
+                                <a href="#" class="title nav-link">Camera Canon EOS M50 Kit</a>
+                                <p class="text-muted small">Matrix: 25 Mpx <br> Brand: Canon</p>
+                            </figcaption>
+                        </figure>
+                    </td>
+                    <td class="text-center">
+                        <span>1</span>
+                    </td>
+                    <td>
+                        <div class="price-wrap text-center text-center d-flex flex-column">
+                            <var class="price fst-normal">$1156.00</var>
+                            <small class="text-muted">$315.20 each</small>
+                        </div>
+                    </td>
+                </tr>
+                <!-- Repeat for other items -->
+            </tbody>
+            <tbody>
+                <tr>
+                    <td>
+                        <figure class="itemside d-flex align-items-center m-0">
+                            <div class="aside"><img src="{% static 'images/items/4.jpg' %}" class="img-sm" width="80"
+                                                    height="80"></div>
+                            <figcaption class="info">
+                                <a href="#" class="title nav-link">Camera Canon EOS M50 Kit</a>
+                                <p class="text-muted small">Matrix: 25 Mpx <br> Brand: Canon</p>
+                            </figcaption>
+                        </figure>
+                    </td>
+                    <td class="text-center">
+                        <span>1</span>
+                    </td>
+                    <td>
+                        <div class="price-wrap text-center d-flex flex-column">
+                            <var class="price fst-normal ">$1156.00</var>
+                            <small class="text-muted">$315.20 each</small>
+                        </div>
+                    </td>
+                </tr>
+                <!-- Repeat for other items -->
+            </tbody>
+            <tbody>
+                <tr>
+                    <td>
+                        <figure class="itemside d-flex align-items-center m-0">
+                            <div class="aside"><img src="{% static 'images/items/4.jpg' %}" class="img-sm" width="80"
+                                                    height="80"></div>
+                            <figcaption class="info">
+                                <a href="#" class="title nav-link">Camera Canon EOS M50 Kit</a>
+                                <p class="text-muted small">Matrix: 25 Mpx <br> Brand: Canon</p>
+                            </figcaption>
+                        </figure>
+                    </td>
+                    <td class="text-center">
+                        <span>1</span>
+                    </td>
+                    <td>
+                        <div class="price-wrap text-center d-flex flex-column">
+                            <var class="price fst-normal">$1156.00</var>
+                            <small class="text-muted">$315.20 each</small>
+                        </div>
+                    </td>
+                </tr>
+                <!-- Repeat for other items -->
+            </tbody>
+            <tbody>
+                <tr>
+                    <td>
+                        <figure class="itemside d-flex align-items-center m-0">
+                            <div class="aside"><img src="{% static 'images/items/4.jpg' %}" class="img-sm" width="80"
+                                                    height="80"></div>
+                            <figcaption class="info">
+                                <a href="#" class="title nav-link">Camera Canon EOS M50 Kit</a>
+                                <p class="text-muted small">Matrix: 25 Mpx <br> Brand: Canon</p>
+                            </figcaption>
+                        </figure>
+                    </td>
+                    <td class="text-center">
+                        <span>1</span>
+                    </td>
+                    <td>
+                        <div class="price-wrap text-center d-flex flex-column">
+                            <var class="price fst-normal">$1156.00</var>
+                            <small class="text-muted">$315.20 each</small>
+                        </div>
+                    </td>
+                </tr>
+                <!-- Repeat for other items -->
+            </tbody>
+        </table>
+    </div>
+</aside>
+{% endblock subcontent %}
