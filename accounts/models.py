@@ -1,6 +1,5 @@
-from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
-
+from django.db import models
 
 # Create your models here.
 
@@ -58,7 +57,7 @@ class Account(AbstractBaseUser):
     is_active = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
 
-    USERNAME_FIELD = 'email' #This attribute will be used as unique indentifier for the user
+    USERNAME_FIELD = 'email' #This attribute will be used as unique identifier for the user
     REQUIRED_FIELDS = ['username', 'first_name', 'last_name'] #This attribute will be prompted during the creation of a superuser
 
     objects = MyAccountManager()
