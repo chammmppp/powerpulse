@@ -20,28 +20,29 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title mb-4">Create New Account</h4>
-                        <form action="">
+                        <form method="POST">
+                            {% csrf_token %}
                             <div class="mb-3">
                                 <label for="firstName" class="form-label">First Name</label>
-                                <input type="text" id="firstName" class="form-control" placeholder="">
+                                <input type="text" name="first_name" class="form-control" required>
                             </div>
                             <div class="mb-3">
                                 <label for="lastName" class="form-label">Last Name</label>
-                                <input type="text" id="lastName" class="form-control" placeholder="">
+                                <input type="text" name="last_name" class="form-control" required>
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" id="email" class="form-control" placeholder="">
+                                <input type="email" name="email" class="form-control" required>
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
-                                <input type="password" id="password" placeholder="" class="form-control">
+                                <input type="password" name="password" placeholder="" class="form-control" required>
                             </div>
                             <div class="form-check mb-3">
                                 <label for="terms" class="form-check-label">I accept the <a href="#"
                                                                                             style="text-decoration: none;">Terms
                                     and Conditions</a></label>
-                                <input type="checkbox" id="terms" class="form-check-input">
+                                <input type="checkbox" id="terms" class="form-check-input" required>
                             </div>
                             <div class="d-grid">
                                 <button type="submit" class="btn  btn-primary  btn-block">Register</button>

@@ -14,14 +14,6 @@ def checkout(request):
     return render(request, 'checkout.html')
 
 
-def login(request):
-    return render(request, 'register/login.html')
-
-
-def signup(request):
-    return render(request, 'register/signup.html')
-
-
 def my_account(request):
     return render(request, 'profiles/my_account.html')
 
