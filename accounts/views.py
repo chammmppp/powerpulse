@@ -14,13 +14,17 @@ def signup(request):
 
         if Account.objects.filter(email=email).exists():
             messages.warning(request, "Email already exists.")
-            return render(request, "register/signup.html")
-
-        user = Account.objects.create_user(
-            first_name=first_name, last_name=last_name, email=email, password=password
-        )
-        user.save()
-        return redirect("login")
+            return redirect("signup")
+        else:
+            user = Account.objects.create_user(
+                first_name=first_name,
+                last_name=last_name,
+                email=email,
+                password=password,
+            )
+            user.save()
+            messages.success(request, "Account created successfully.")
+            return redirect("login")
     else:
         return render(request, "register/signup.html")
 
