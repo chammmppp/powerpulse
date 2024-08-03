@@ -1,52 +1,64 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{% static 'css/text.css' %}">
 
     <title>PowerPulse - Login</title>
 
 </head>
+
 <body>
-<section>
-    <div class="container my-5 py-5">
-        <div class="row">
-            <div class="col-12 col-sm-8 col-md-6 m-auto">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title mb-4">Sign In</h4>
-                        <form action="">
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" id="email" class="form-control" placeholder="">
-                            </div>
-                            <div class="mb-3">
-                                <a href="#" class="float-end" style="text-decoration: none;">Forgot Password?</a>
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" id="password" placeholder="" class="form-control">
-                            </div>
-                            <div class="form-check mb-3">
-                                <label for="rememberMe" class="form-check-label">Remember Me</label>
-                                <input type="checkbox" id="rememberMe" class="form-check-input">
-                            </div>
-                            <div class="d-grid">
-                                <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="card-footer bg-white text-center">
-                        <p class="card-text d-inline">Don't have an account?</p>
-                        <a href="{% url 'signup' %}" class="d-inline" style="text-decoration: none;">Create Account</a>
+    <section>
+        <div class="container my-5 py-5">
+            <div class="row">
+                <div class="col-12 col-sm-8 col-md-6 m-auto">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title mb-4">Sign In</h4>
+                            <form method="POST">
+                                {% csrf_token %}
+                                {% if messages %}
+                                {% for message in messages %}
+                                <div class="alert alert-{{message.tags}}" role="alert">
+                                    {{message}}
+                                </div>
+                                {% endfor %}
+                                {% endif %}
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" id="email" name="email" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <a href="#" class="float-end" style="text-decoration: none;">Forgot Password?</a>
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" id="password" name="password" class="form-control" required>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <label for="rememberMe" class="form-check-label">Remember Me</label>
+                                    <input type="checkbox" id="rememberMe" class="form-check-input" required>
+                                </div>
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="card-footer bg-white text-center">
+                            <p class="card-text d-inline">Don't have an account?</p>
+                            <a href="{% url 'signup' %}" class="d-inline" style="text-decoration: none;">Create
+                                Account</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 </body>
+
 </html>
