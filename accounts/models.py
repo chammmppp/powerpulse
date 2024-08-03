@@ -52,8 +52,13 @@ class Account(AbstractBaseUser):
     is_active = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=False)
 
-    USERNAME_FIELD = 'email' #This attribute will be used as unique identifier for the user
-    REQUIRED_FIELDS = [ 'first_name', 'last_name'] #This attribute will be prompted during the creation of a superuser
+    USERNAME_FIELD = (
+        "email"  # This attribute will be used as unique identifier for the user
+    )
+    REQUIRED_FIELDS = [
+        "first_name",
+        "last_name",
+    ]  # This attribute will be prompted during the creation of a superuser
 
     objects = MyAccountManager()
 
