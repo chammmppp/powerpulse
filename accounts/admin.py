@@ -14,7 +14,6 @@ class AccountAdmin(UserAdmin):
         "is_active",
         "last_login",
         "date_joined",
-        "is_active",
     )
     list_display_links = ("email", "first_name", "last_name")
     readonly_fields = ("last_login", "date_joined")

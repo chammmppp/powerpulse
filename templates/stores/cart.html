@@ -42,9 +42,10 @@
             </div>
         </aside>
         {% else %}
+
+
         <main class="col-md-9">
             <!-- Item -->
-
             {% for cart_item in cart_items %}
             <article class="card card-body mb-3">
                 <div class="row align-items-center">
@@ -54,21 +55,24 @@
                                 <img alt="Product image" src="{{ cart_item.product.images.url }}" class="border img-sm">
                             </div>
                             <figcaption class="info mx-3 d-flex flex-column">
-                                <a href="#" class="title">{{ cart_item.product.product_name}}</a>
-                                <span class="text-muted small">{{ cart_item.product.slug}}</span>
+                                <a href="{{cart_item.product.get_url }}" class="title">
+                                    {{cart_item.product.product_name}}</a>
+                                <span class="text-muted small">{{cart_item.product.slug}}</span>
                             </figcaption>
                         </figure>
                     </div>
                     <div class="col">
                         <div class="input-group input-spinner">
                             <div class="input-group-prepend">
-                                <a href="{% url 'remove_cart' cart_item.product.id %}" class="btn btn-light rounded-end-0" type="button" id="button-plus">
+                                <a href="{% url 'remove_cart' cart_item.product.id %}"
+                                    class="btn btn-light rounded-end-0" type="button" id="button-plus">
                                     <i class="fa fa-minus"></i>
                                 </a>
                             </div>
                             <input type="text" class="form-control" value="{{cart_item.quantity}}">
                             <div class="input-group-append">
-                                <a href="{% url 'add_cart' cart_item.product.id %}" class="btn btn-light rounded-start-0" type="button" id="button-minus">
+                                <a href="{% url 'add_cart' cart_item.product.id %}"
+                                    class="btn btn-light rounded-start-0" type="button" id="button-minus">
                                     <i class="fa fa-plus"></i>
                                 </a>
                             </div>
@@ -76,12 +80,14 @@
                     </div>
                     <div class="col ">
                         <div class="prices">
-                            <var class="price-total  fst-normal fw-bold d-block m-0">&#3647;{{ cart_item.sub_total }}</var>
-                            <small class="price-each text-muted">&#3647;{{ cart_item.product.price}} each</small>
+                            <var
+                                class="price-total  fst-normal fw-bold d-block m-0">&#3647;{{cart_item.sub_total}}</var>
+                            <small class="price-each text-muted">&#3647;{{cart_item.product.price}} each</small>
                         </div>
                     </div>
                     <div class="col flex-grow-0 text-end">
-                        <a href="{% url 'remove_cart_item' cart_item.product.id %}" class="btn btn-light"><i class="fa fa-times"></i></a>
+                        <a href="{% url 'remove_cart_item' cart_item.product.id %}" class="btn btn-light"><i
+                                class="fa fa-times"></i></a>
                     </div>
                 </div>
             </article>

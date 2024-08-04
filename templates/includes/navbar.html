@@ -29,8 +29,13 @@
                     <span class="d-block" style="font-size: 10px;">Login</span>
                 </a>
                 {% endif %}
-                <a href="{% url 'cart' %}" class="nav-link d-flex flex-column align-items-center ">
+                <a href="{% url 'cart' %}" class="nav-link d-flex flex-column align-items-center position-relative">
                     <i class="bi bi-bag"></i>
+                    <span
+                        class="position-absolute text-center translate-middle  bg-danger border border-light rounded-pill"
+                        style="font-size: 8px; left: 80%; top: 10%; width: 15px;">
+                        15+
+                    </span>
                     <span class="d-block" style="font-size: 10px;">My Cart</span>
                 </a>
             </div>
