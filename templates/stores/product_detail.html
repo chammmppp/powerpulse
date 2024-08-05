@@ -35,20 +35,20 @@
                     <p>{{ single_product.description }}</p>
 
                     <!-- Product details -->
-                    <dl class="row">
+                    <!-- <dl class="row">
                         <dt class="col-sm-3">Items</dt>
                         <dd class="col-sm-9">Odsy-1000</dd>
 
                         <dt class="col-sm-3">Color</dt>
                         <dd class="col-sm-9">Brown</dd>
-                    </dl>
+                    </dl> -->
 
                     <hr>
                     <!-- Section for selecting quantity and size -->
                     <div class="row mb-4">
                         <div class="form-group col-md flex-grow-0">
                             <!-- Quantity selector -->
-                            <label>Quantity</label>
+                            <label class="form-label">Quantity</label>
                             <div class="col">
                                 <div class="input-group input-spinner">
                                     <div class="input-group-prepend">
@@ -58,40 +58,16 @@
                                     </div>
                                     <input type="text" class="form-control" value="1">
                                     <div class="input-group-append">
-                                        <button class="btn btn-light rounded-start-0" type="button"
-                                                id="button-minus">
+                                        <button class="btn btn-light rounded-start-0" type="button" id="button-minus">
                                             <i class="fa fa-plus"></i>
                                         </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group col-md">
-                            <!-- Size selector -->
-                            <label>Select size</label>
-                            <div class="mt-2">
-                                <!-- Size options -->
-                                <label class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" name="select_size" checked=""
-                                           class="custom-control-input me-2">
-                                    <div class="custom-control-label">Small</div>
-                                </label>
-
-                                <label class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" name="select_size" class="custom-control-input me-2">
-                                    <div class="custom-control-label">Medium</div>
-                                </label>
-
-                                <label class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" name="select_size" class="custom-control-input me-2">
-                                    <div class="custom-control-label">Large</div>
-                                </label>
-                            </div>
-                        </div>
                     </div>
                     <!-- Buttons for buying or adding the product to the cart -->
-                    {% if single_product.stock <= 0 %}
-                    <h5 class="text-danger">Out of stock</h5>
+                    {% if single_product.stock == 0 %} <h5 class="text-danger">Out of stock</h5>
                     {% else %}
                     <a href="#" class="btn btn-primary">Buy now</a>
                     <a href="{% url 'add_cart' single_product.id %}" class="btn btn-outline-primary">

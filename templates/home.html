@@ -41,14 +41,19 @@
                             </div>
                             <div class="card-body p-2">
                                 <div class="fix-height mb-2">
-                                    <p class="card-text m-0 p-0">{{ popular_product.product_name }}</p>
-                                    <p class="">{{popular_product.description}}</p>
+                                    <p class="card-text m-0 p-0" style="height: 30px;overflow: hidden;">
+                                        {{popular_product.product_name }}</p>
                                     <span class="price">&#3647;{{ popular_product.price }}</span>
                                 </div>
                                 <div class="btn-product d-grid">
+                                    {% if popular_product.stock == 0 %}
                                     <a href="{% url 'add_cart' popular_product.id %}"
-                                        class="btn btn-primary btn-add-to-cart">Add to
+                                        class="btn btn-outline-danger disabled ">Out of stock</a>
+                                    {% else %} <a href="{% url 'add_cart' popular_product.id %}"
+                                        class="btn btn-primary btn-add-to-cart ">Add to
                                         cart</a>
+                                    {% endif %}
+
                                 </div>
                             </div>
                         </div>

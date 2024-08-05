@@ -22,16 +22,12 @@
     color: inherit;
 }
 
-.card-text{
+.card-text {
     font-weight: 600;
 }
 
 .btn-add-to-cart {
     color: #fff !important;
-}
-
-.fix-height {
-    overflow: hidden;
 }
 
 .img-wrap {
