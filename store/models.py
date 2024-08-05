@@ -7,9 +7,9 @@ from django.urls import reverse
 
 
 class Product(models.Model):
-    product_name = models.CharField(max_length=200)
-    slug = models.SlugField(max_length=200)
-    description = models.TextField()
+    product_name = models.CharField(max_length=100)
+    slug = models.SlugField(max_length=100)
+    description = models.TextField(max_length=200)
     price = models.IntegerField()
     images = models.ImageField(upload_to="photos/products")
     stock = models.IntegerField()

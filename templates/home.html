@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-<link rel="stylesheet" href="{% static 'css/home.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/home.css' %}" />
 <title>PowerPulse - Home</title>
 {% endblock %}
 
@@ -14,8 +14,7 @@
     <section class="section-intro">
         <div class="container">
             <div class="intro-banner-wrap">
-                <img class="rounded" src="{% static 'images/banners/1.jpg' %}"
-                     alt="Healthy Asian woman doing squats"/>
+                <img class="rounded" src="{% static 'images/banners/1.jpg' %}" alt="Healthy Asian woman doing squats" />
             </div>
         </div>
     </section>
@@ -37,16 +36,18 @@
                         <div class="card card-product">
                             <div class="img-wrap">
                                 <img class="rounded-top" style="width: 220px; height: auto;"
-                                     src="{{ popular_product.images.url }}"
-                                     alt="Optimum Nutrition Whey Protein Gold 5 LBS"/>
+                                    src="{{ popular_product.images.url }}"
+                                    alt="Optimum Nutrition Whey Protein Gold 5 LBS" />
                             </div>
                             <div class="card-body p-2">
                                 <div class="fix-height mb-2">
                                     <p class="card-text m-0 p-0">{{ popular_product.product_name }}</p>
+                                    <p class="">{{popular_product.description}}</p>
                                     <span class="price">&#3647;{{ popular_product.price }}</span>
                                 </div>
                                 <div class="btn-product d-grid">
-                                    <a href="{% url 'add_cart' popular_product.id %}" class="btn btn-primary btn-add-to-cart">Add to
+                                    <a href="{% url 'add_cart' popular_product.id %}"
+                                        class="btn btn-primary btn-add-to-cart">Add to
                                         cart</a>
                                 </div>
                             </div>
