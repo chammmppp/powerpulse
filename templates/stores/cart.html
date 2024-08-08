@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load humanize %}
 {% block title %}
 <link rel="stylesheet" href="{% static 'css/cart.css' %}">
 <title>PowerPulse - Cart</title>
@@ -70,19 +70,29 @@
                                 </a>
                             </div>
                             <input type="text" class="form-control" value="{{cart_item.quantity}}">
+                            {%if cart_item.quantity >= cart_item.product.stock%}
+                            <div class="input-group-append">
+                                <a href="{% url 'add_cart' cart_item.product.id %}"
+                                    class="btn btn-light rounded-start-0 disabled" type="button" id="button-minus">
+                                    <i class="fa fa-plus"></i>
+                                </a>
+                            </div>
+                            {%else%}
                             <div class="input-group-append">
                                 <a href="{% url 'add_cart' cart_item.product.id %}"
                                     class="btn btn-light rounded-start-0" type="button" id="button-minus">
                                     <i class="fa fa-plus"></i>
                                 </a>
                             </div>
+                            {%endif%}
                         </div>
                     </div>
                     <div class="col ">
                         <div class="prices">
-                            <var
-                                class="price-total  fst-normal fw-bold d-block m-0">&#3647;{{cart_item.sub_total}}</var>
-                            <small class="price-each text-muted">&#3647;{{cart_item.product.price}} each</small>
+                            <var class="price-total  fst-normal fw-bold d-block m-0">
+                                &#3647;{{cart_item.sub_total | intcomma}}</var>
+                            <small class="price-each text-muted">&#3647;{{cart_item.product.price | intcomma}}
+                                each</small>
                         </div>
                     </div>
                     <div class="col flex-grow-0 text-end">
@@ -101,15 +111,15 @@
                 <div class="card-body">
                     <dl class="dlist-align d-flex justify-content-between m-0">
                         <dt>Total price:</dt>
-                        <dd>&#3647;{{total}}</dd>
+                        <dd>&#3647;{{total | intcomma}}</dd>
                     </dl>
                     <dl class="dlist-align d-flex justify-content-between m-0">
                         <dt>Tax:</dt>
-                        <dd class="text-danger">&#3647;{{tax}}</dd>
+                        <dd class="text-danger">&#3647;{{tax | intcomma}}</dd>
                     </dl>
                     <dl class="dlist-align d-flex justify-content-between m-0">
                         <dt>Grand Total:</dt>
-                        <dd><strong>&#3647;{{grand_total}}</strong></dd>
+                        <dd><strong>&#3647;{{grand_total | intcomma}}</strong></dd>
                     </dl>
                     <hr>
                     <div class="d-grid gap-2">

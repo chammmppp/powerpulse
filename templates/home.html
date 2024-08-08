@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load humanize %}
 {% block title %}
 <link rel="stylesheet" href="{% static 'css/home.css' %}" />
 <title>PowerPulse - Home</title>
@@ -43,7 +43,7 @@
                                 <div class="fix-height mb-2">
                                     <p class="card-text m-0 p-0" style="height: 30px;overflow: hidden;">
                                         {{popular_product.product_name }}</p>
-                                    <span class="price">&#3647;{{ popular_product.price }}</span>
+                                    <span class="price">&#3647;{{ popular_product.price | intcomma}}</span>
                                 </div>
                                 <div class="btn-product d-grid">
                                     {% if popular_product.stock == 0 %}
