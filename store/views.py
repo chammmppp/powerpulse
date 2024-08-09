@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from store.models import Product
 from category.models import Category
-from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.core.paginator import Paginator
+from django.db.models import Q
 
 # Create your views here.
 
@@ -17,10 +18,13 @@ def store(request, category_slug=None):
         products = Product.objects.filter(
             category=categories, is_available=True
         )  # Get object products that exist on database
+        paginator = Paginator(products, 8)
+        page = request.GET.get("page")
+        paged_products = paginator.get_page(page)
         product_count = products.count()
     else:
-        products = Product.objects.all().filter(is_available=True)
-        paginator = Paginator(products, 12)
+        products = Product.objects.all().filter(is_available=True).order_by("id")
+        paginator = Paginator(products, 8)
         page = request.GET.get("page")
         paged_products = paginator.get_page(page)
         product_count = products.count()
@@ -43,3 +47,18 @@ def product_detail(request, category_slug, product_slug):
         "single_product": single_product,
     }
     return render(request, "stores/product_detail.html", context)
+
+
+def search(request):
+    # products = Product.objects.all().filter(is_available=True) #If doesn't type any words in search box this statement will take the user to all products
+    if "keyword" in request.GET:
+        keyword = request.GET["keyword"]
+        if keyword:
+            products = Product.objects.order_by("-created_date").filter(
+                Q(description__icontains=keyword) | Q(product_name__icontains=keyword)
+            )
+
+    context = {
+        "products": products,
+    }
+    return render(request, "stores/store.html", context)

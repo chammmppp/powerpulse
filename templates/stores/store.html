@@ -87,6 +87,7 @@
 
             <div class="col-md-9">
                 <div class="row">
+                    {% if products %}
                     {% for product in products %}
                     <div class="col-md-4 mb-3">
                         <div class="card card-product">
@@ -116,16 +117,47 @@
                         </div>
                     </div>
                     {% endfor %}
+                    <nav aria-label="Page navigation example">
+                        {% if products.has_other_pages %}
+                        <ul class="pagination">
+                            {% if products.has_previous %}
+                            <li class="page-item"><a class="page-link"
+                                    href="?page={{prouducts.previous_page_number}}">Previous</a></li>
+                            {% else %}
+                            <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                            {%endif%}
+
+                            {%for i in products.paginator.page_range %}
+                            {%if products.number == i%}
+                            <li class="page-item active"><a class="page-link" href="#">{{i}}</a></li>
+                            {% else %}
+                            <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+                            {%endif%}
+                            {%endfor%}
+
+                            {%if products.has_next%}
+                            <li class="page-item"><a class="page-link"
+                                    href="?page={{products.next_page_number}}">Next</a></li>
+
+                            {%else%}
+                            <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+
+                            {%endif%}
+                        </ul>
+                        {% endif %}
+                    </nav>
+                    {% else %}
+                    {%if 'search' in request.path %}
+                    <h2>No result found, please try again</h2>
+                    {%else%}
+                    <h2>Sorry, we don't have any items in at stock at moment</h2>
+                    {%endif%}
+                    <div class="img-empty">
+                        <img src="{% static 'images/carts/cart_empty.png'%}" alt="">
+                    </div>
+                    {% endif %}
                 </div>
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                    </ul>
-                </nav>
+
             </div>
         </div>
     </div>
