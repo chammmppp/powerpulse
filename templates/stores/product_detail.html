@@ -53,16 +53,28 @@
                             <div class="col">
                                 <div class="input-group input-spinner">
                                     <div class="input-group-prepend">
-                                        <button class="btn btn-light rounded-end-0" type="button" id="button-plus">
+                                        <a href="{% url 'remove_cart' single_product.id %}"
+                                            class="btn btn-light rounded-end-0" type="button" id="button-plus">
                                             <i class="fa fa-minus"></i>
-                                        </button>
+                                        </a>
                                     </div>
                                     <input type="text" class="form-control" value="1">
+                                    {% if quantity >= single_product.stock %}
                                     <div class="input-group-append">
-                                        <button class="btn btn-light rounded-start-0" type="button" id="button-minus">
+                                        <a href="{% url 'add_cart' single_product.id %}"
+                                            class="btn btn-light rounded-start-0 disabled" type="button"
+                                            id="button-minus">
                                             <i class="fa fa-plus"></i>
-                                        </button>
+                                        </a>
                                     </div>
+                                    {%else%}
+                                    <div class="input-group-append">
+                                        <a href="{% url 'add_cart' single_product.id %}"
+                                            class="btn btn-light rounded-start-0" type="button" id="button-minus">
+                                            <i class="fa fa-plus"></i>
+                                        </a>
+                                    </div>
+                                    {%endif%}
                                 </div>
                             </div>
                         </div>

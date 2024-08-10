@@ -1,16 +1,33 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load humanize %}
 {% block title %}
-    <!-- Setting the title of the page -->
-    <title>PowerPulse - Checkout</title>
+<!-- Setting the title of the page -->
+<title>PowerPulse - Checkout</title>
 {% endblock %}
 
 {% block content %}
-    <!-- Main container for the checkout page content -->
-    <div class="container my-5 py-5">
-        <section class="section-content padding-y bg">
-            <div class="container">
+
+<!-- Modal Order complete -->
+{%if order_completed %}
+<div class="modal fade show" id="modal-order" tabindex="-1" role="dialog" aria-hidden="true" style="display: block;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h4 class="modal-title">Order successfully completed <i class="bi bi-check-circle"></i></h4>
+            </div>
+            <div class="modal-footer"><a href="/" class="btn btn-success">Go to Home page</a></div>
+        </div>
+    </div>
+</div>
+{%endif%}
+
+<!-- Main container for the checkout page content -->
+<div class="container my-5 py-5">
+    <section class="section-content padding-y bg">
+        <div class="container">
+            <form method="POST">
+                {% csrf_token %}
                 <div class="row">
                     <main class="col-md-8">
                         <!-- Card for reviewing the cart items -->
@@ -19,149 +36,95 @@
                                 <h4 class="card-title mb-4">Review cart</h4>
                                 <div class="row">
                                     <!-- Each item in the cart -->
+                                    {%for cart_item in cart_items %}
                                     <div class="col-md-6">
                                         <figure class="itemside mb-4">
                                             <div class="aside">
-                                                <!-- Product image -->
-                                                <img alt="Image product"
-                                                     src="{% static 'images/items/4.jpg' %}"
-                                                     class="border img-sm" style="width: 80px; height: auto;">
+                                                <img alt="Image product" src="{{ cart_item.product.images.url }}"
+                                                    style="width: 80px; height: 80px;" class="border img-sm">
                                             </div>
                                             <figcaption class="info">
-                                                <!-- Product details -->
-                                                <p>Apple iPad (2019) 32Gb Wi-Fi gold </p>
-                                                <span class="text-muted">2x = $560 </span>
+                                                <p style="height: 50px;overflow: hidden;">
+                                                    {{cart_item.product.product_name}}
+                                                </p>
+                                                <!-- <span class="text-muted">2x = $560 </span> -->
+                                                <span class="text-muted">{{cart_item.quantity}}x =
+                                                    &#3647;{{cart_item.sub_total | intcomma}}</span>
                                             </figcaption>
                                         </figure>
                                     </div>
-                                    <!-- Repeat for other items... -->
-                                    <div class="col-md-6">
-                                        <figure class="itemside mb-4">
-                                            <div class="aside">
-                                                <img alt="Image product"
-                                                     src="{% static 'images/items/4.jpg' %}"
-                                                     style="width: 80px; height: auto;" class="border img-sm">
-                                            </div>
-                                            <figcaption class="info">
-                                                <p>Apple iPad (2019) 32Gb Wi-Fi gold </p>
-                                                <span class="text-muted">2x = $560 </span>
-                                            </figcaption>
-                                        </figure>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <figure class="itemside mb-4">
-                                            <div class="aside">
-                                                <img alt="Image product"
-                                                     src="{% static 'images/items/4.jpg' %}"
-                                                     style="width: 80px; height: auto;" class="border img-sm">
-                                            </div>
-                                            <figcaption class="info">
-                                                <p>Apple iPad (2019) 32Gb Wi-Fi gold </p>
-                                                <span class="text-muted">2x = $560 </span>
-                                            </figcaption>
-                                        </figure>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <figure class="itemside mb-4">
-                                            <div class="aside">
-                                                <img alt="Image product"
-                                                     src="{% static 'images/items/4.jpg' %}"
-                                                     style="width: 80px; height: auto;" class="border img-sm">
-                                            </div>
-                                            <figcaption class="info">
-                                                <p>Apple iPad (2019) 32Gb Wi-Fi gold </p>
-                                                <span class="text-muted">2x = $560 </span>
-                                            </figcaption>
-                                        </figure>
-                                    </div>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </article>
 
-                        <!-- Card for collecting contact information -->
-                        <article class="card mb-4">
-                            <div class="card-body">
-                                <h4 class="card-title mb-4">Contact info</h4>
-                                <form action="">
-                                    <div class="row">
-                                        <div class="form-group col-sm-6">
-                                            <!-- First name input -->
-                                            <label>First name</label>
-                                            <input type="text" placeholder="" class="form-control">
-                                        </div>
-                                        <div class="form-group col-sm-6">
-                                            <!-- Last name input -->
-                                            <label>Last name</label>
-                                            <input type="text" placeholder="" class="form-control">
-                                        </div>
-                                        <div class="form-group col-sm-6">
-                                            <!-- Phone number input -->
-                                            <label>Phone</label>
-                                            <input type="text" value="" class="form-control">
-                                        </div>
-                                        <div class="form-group col-sm-6">
-                                            <!-- Email input -->
-                                            <label>Email</label>
-                                            <input type="email" placeholder="" class="form-control">
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </article>
 
                         <!-- Card for collecting delivery information -->
                         <article class="card mb-4">
                             <div class="card-body">
                                 <h4 class="card-title mb-4">Delivery info</h4>
-                                <form action="">
-                                    <div class="row">
-                                        <div class="form-group col-sm-6">
-                                            <!-- House number input -->
-                                            <label>House No</label>
-                                            <input type="text" placeholder="" class="form-control">
-                                        </div>
-                                        <div class="form-group col-sm-6">
-                                            <!-- Village number input -->
-                                            <label>Village No</label>
-                                            <input type="text" placeholder="" class="form-control">
-                                        </div>
-                                        <div class="form-group col-sm-6">
-                                            <!-- Lane input -->
-                                            <label>Lane</label>
-                                            <input type="text" placeholder="" class="form-control">
-                                        </div>
-                                        <div class="form-group col-sm-6">
-                                            <!-- Road input -->
-                                            <label>Road</label>
-                                            <input type="text" placeholder="" class="form-control">
-                                        </div>
-                                        <div class="form-group col-sm-6">
-                                            <!-- Sub-district/Sub-area input -->
-                                            <label>Sub-district/Sub-area</label>
-                                            <input type="text" placeholder="" class="form-control">
-                                        </div>
-                                        <div class="form-group col-sm-6">
-                                            <!-- District/Area input -->
-                                            <label>District/Area</label>
-                                            <input type="text" placeholder="" class="form-control">
-                                        </div>
-                                        <div class="form-group col-sm-6">
-                                            <!-- Province selection -->
-                                            <label>Province</label>
-                                            <select name="" class="form-control">
-                                                <option value=""></option>
-                                                <option value="">กรุงเทพมหานคร</option>
-                                                <option value="">สมุทรปราการ</option>
-                                                <option value="">นนทบุรี</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-sm-6">
-                                            <!-- Postal code input -->
-                                            <label>Postal code</label>
-                                            <input type="text" placeholder="" class="form-control">
-                                        </div>
+
+                                <div class="row">
+                                    <!-- Contact info -->
+                                    <div class="form-group col-sm-6">
+                                        <!-- First name input -->
+                                        <label>First name</label>
+                                        <input type="text" name="first_name" class="form-control" required>
                                     </div>
-                                </form>
+                                    <div class="form-group col-sm-6">
+                                        <!-- Last name input -->
+                                        <label>Last name</label>
+                                        <input type="text" name="last_name" class="form-control" required>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <!-- Phone number input -->
+                                        <label>Phone</label>
+                                        <input type="text" name="phone" class="form-control" required>
+                                    </div>
+
+                                    <!-- Address info-->
+                                    <div class="form-group col-sm-6">
+                                        <!-- House number input -->
+                                        <label>House No</label>
+                                        <input type="text" name="house_no" class="form-control" required>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <!-- Village number input -->
+                                        <label>Village No</label>
+                                        <input type="text" name="village_no" class="form-control" required>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <!-- Lane input -->
+                                        <label>Lane</label>
+                                        <input type="text" name="lane" class="form-control" required>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <!-- Road input -->
+                                        <label>Road</label>
+                                        <input type="text" name="road" class="form-control" required>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <!-- Sub-district/Sub-area input -->
+                                        <label>Sub-district/Sub-area</label>
+                                        <input type="text" name="sub_district" class="form-control" required>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <!-- District/Area input -->
+                                        <label>District/Area</label>
+                                        <input type="text" name="district" class="form-control" required>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <!-- Province selection -->
+                                        <label>Province</label>
+                                        <input type="text" name="province" class="form-control" required>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <!-- Postal code input -->
+                                        <label>Postal code</label>
+                                        <input type="text" name="postal_code" class="form-control" required>
+                                    </div>
+                                </div>
+
                             </div>
                         </article>
 
@@ -170,14 +133,12 @@
                             <!-- QR code payment option -->
                             <div class="card mb-2">
                                 <header class="card-header">
-                                    <img alt="Image QR code"
-                                         src="{% static 'images/items/4.jpg' %}"
-                                         class="float-end"
-                                         height="24">
+                                    <img alt="Image QR code" src="{% static 'images/items/4.jpg' %}" class="float-end"
+                                        height="24">
                                     <label class="form-check collapsed" data-toggle="collapse"
-                                           data-target="#pay_paynet">
+                                        data-target="#pay_paynet">
                                         <input class="form-check-input" name="payment-option" checked="" type="radio"
-                                               value="option2">
+                                            value="option2">
                                         <h6 class="form-check-label">QR code</h6>
                                     </label>
                                 </header>
@@ -186,9 +147,8 @@
                                         <!-- QR code payment instructions -->
                                         <p class="text-center m-0 d-flex align-content-center">
                                             <a href="#">
-                                                <img alt="Image product"
-                                                     src="{% static 'images/items/4.jpg' %}"
-                                                     style="width: 20%; height: auto; object-fit: cover"></a>
+                                                <img alt="Image product" src="{% static 'images/items/4.jpg' %}"
+                                                    style="width: 20%; height: auto; object-fit: cover"></a>
                                             <br><br>
                                         </p>
                                     </div>
@@ -201,7 +161,7 @@
                                     <img src="images/items/4.jpg" class="float-end" height="24">
                                     <label class="form-check" data-toggle="collapse" data-target="#pay_card">
                                         <input class="form-check-input" name="payment-option" type="radio"
-                                               value="option1">
+                                            value="option1">
                                         <h6 class="form-check-label">Bank Transfer</h6>
                                     </label>
                                 </header>
@@ -237,12 +197,15 @@
                                 </dl>
                                 <hr>
                                 <!-- Button to finalize the purchase -->
-                                <a href="#" class="d-grid btn btn-primary btn-block">Make purchase</a>
+                                <div class="d-grid">
+                                    <button href="#" class="d-grid btn btn-primary btn-block">Make purchase</button>
+                                </div>
                             </div>
                         </div>
                     </aside>
                 </div>
-            </div>
-        </section>
-    </div>
+            </form>
+        </div>
+    </section>
+</div>
 {% endblock %}
