@@ -15,6 +15,7 @@ def _cart_id(request):
 
 def add_cart(request, product_id):
     product = Product.objects.get(id=product_id)  # Get the product by unique id
+
     try:
         cart = Cart.objects.get(cart_id=_cart_id(request))
     except Cart.DoesNotExist:
@@ -22,14 +23,15 @@ def add_cart(request, product_id):
     cart.save()  # save() is a method in Django to save the current sate of the cart object to the database
 
     quantity = int(request.GET.get("quantity", 1))
+
     try:
         cart_item = CartItem.objects.get(product=product, cart=cart)
-        cart_item.quantity += 1
+        cart_item.quantity += quantity  # เพิ่ม quantity ตามที่ผู้ใช้เลือก
         cart_item.save()
     except CartItem.DoesNotExist:
         cart_item = CartItem.objects.create(
             product=product,
-            quantity=1,
+            quantity=quantity,  # ใช้ quantity ที่ผู้ใช้เลือก
             cart=cart,
         )
         cart_item.save()
@@ -60,6 +62,7 @@ def remove_cart_item(request, product_id):
 def cart(request, total=0, quantity=0, cart_items=None):
     tax_rate = 0.07
     grand_total = 0
+    tax = 0
     try:
         cart = Cart.objects.get(cart_id=_cart_id(request))
         cart_items = CartItem.objects.filter(cart=cart, is_active=True)

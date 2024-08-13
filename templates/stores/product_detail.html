@@ -3,7 +3,6 @@
 {% load humanize %}
 
 {% block title %}
-
 PowerPulse - Product detail
 {% endblock %}
 
@@ -12,75 +11,61 @@ PowerPulse - Product detail
 {%endblock%}
 
 {% block content %}
-<!-- Main container for the product detail page content -->
 <div class="container my-5 py-5">
-        <div class="card">
-                <div class="row no-gutters">
-                        <aside class="col-md-6">
-                                <!-- Section for the main product image -->
-                                <div class="img-big-wrap">
-                                        <a href="#">
-                                                <!-- Product image -->
-                                                <img class="img-fluid " src="{{ single_product.images.url }}"
-                            alt="Product image">
-                                            </a>
-                                    </div>
-                            </aside>
-                        <main class="col-md-6 border-start">
-                                <article class="content-body p-4">
-                                        <!-- Product title -->
-                                        <h2 class="title">{{ single_product.product_name }}</h2>
-                                        <!-- Product price -->
-                                        <div class="mb-3">
-                                                <var class="price h4">&#3647;{{ single_product.price | intcomma }}</var>
-                                                <span class="text-muted">/per piece</span>
-                                            </div>
+    <div class="card">
+        <div class="row no-gutters">
+            <aside class="col-md-6">
+                <div class="img-big-wrap">
+                    <a href="#">
+                        <img class="img-fluid " src="{{ single_product.images.url }}" alt="Product image">
+                    </a>
+                </div>
+            </aside>
+            <main class="col-md-6 border-start">
+                <article class="content-body p-4">
+                    <h2 class="title">{{ single_product.product_name }}</h2>
+                    <div class="mb-3">
+                        <var class="price h4">&#3647;{{ single_product.price | intcomma }}</var>
+                        <span class="text-muted">/per piece</span>
+                    </div>
 
-                                        <!-- Product description -->
-                                        <p>{{ single_product.description }}</p>
+                    <p>{{ single_product.description }}</p>
 
-                                       
                     <hr>
-                                        <!-- Section for selecting quantity and size -->
-                                        <div class="row mb-4">
-                                                <div class="form-group col-md flex-grow-0">
-                                                        <label class="form-label">Quantity</label>
-                                                        <div class="col">
-                                                                <div class="input-group input-spinner">
-                                                                        <div class="input-group-prepend">
-                                                                                <button
-                                            class="btn btn-light rounded-end-0" type="button" id="button-minus">
-                                                                                        <i class="fa fa-minus"></i>
-                                                                                    </button>
-                                                                            </div>
-                                                                        <input type="text" class="form-control"
-                                        value="1" id="quantity-input">
-                                                                        <div class="input-group-append">
-                                                                                <button class="btn btn-light
-                     rounded-start-0" type="button" id="button-plus">
-                                                                                        <i class="fa fa-plus"></i>
-                                                                                    </button>
-                                                                            </div>
-                                                                    </div>
-                                                            </div>
-                                                    </div>
-                                            </div>
-                                        <!-- Buttons for buying or adding the product to the cart -->
-                                        {% if single_product.stock == 0 %}
-                                        <h5 class="text-danger">Out of stock</h5>
-                                        {% else %}
-                                        <a href="#" class="btn btn-primary">Buy now</a>
-                                        <a href="{% url 'add_cart' single_product.id %}"
-                        class="btn btn-outline-primary">
-                                                <span class="text">Add to cart</span>
-                                                <i class="fas fa-shopping-cart"></i>
-                                            </a>
-                                        {% endif %}
-                                   
+                    <div class="row mb-4">
+                        <div class="form-group col-md flex-grow-0">
+                            <label class="form-label">Quantity</label>
+                            <div class="col">
+                                <div class="input-group input-spinner">
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-light rounded-end-0" type="button" id="button-minus">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                    <input type="text" class="form-control" value="1" id="quantity-input">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-light rounded-start-0" type="button" id="button-plus">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% if single_product.stock == 0 %}
+                    <h5 class="text-danger">Out of stock</h5>
+                    {% else %}
+                    <a href="#" class="btn btn-primary">Buy now</a>
+                    <a href="{% url 'add_cart' single_product.id %}" class="btn btn-outline-primary"
+                        id="add-to-cart-button">
+                        <span class="text">Add to cart</span>
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                    {% endif %}
                 </article>
-                            </main>
-                    </div>
-            </div>
+            </main>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -100,10 +85,8 @@ PowerPulse - Product detail
         let quantity = parseInt(quantityInput.value);
         quantity++;
         quantityInput.value = quantity;
-    })
-</script>
+    });
 
-<script>
     const addToCartButton = document.getElementById('add-to-cart-button');
 
     addToCartButton.addEventListener('click', () => {
