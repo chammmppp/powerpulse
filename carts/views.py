@@ -21,6 +21,7 @@ def add_cart(request, product_id):
         cart = Cart.objects.create(cart_id=_cart_id(request))
     cart.save()  # save() is a method in Django to save the current sate of the cart object to the database
 
+    quantity = int(request.GET.get("quantity", 1))
     try:
         cart_item = CartItem.objects.get(product=product, cart=cart)
         cart_item.quantity += 1
@@ -57,7 +58,7 @@ def remove_cart_item(request, product_id):
 
 # Create your views here.
 def cart(request, total=0, quantity=0, cart_items=None):
-    tax = 0.07
+    tax_rate = 0.07
     grand_total = 0
     try:
         cart = Cart.objects.get(cart_id=_cart_id(request))
@@ -67,10 +68,10 @@ def cart(request, total=0, quantity=0, cart_items=None):
                 cart_item.product.price * cart_item.quantity
             )  # Product price * quantity
             quantity += cart_item.quantity
-        tax = round(tax * total, 2)
+        tax = round(tax_rate * total, 2)
         grand_total = total + tax
     except ObjectDoesNotExist:
-        pass
+        cart_items = None
 
     context = {
         "total": total,

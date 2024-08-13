@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load humanize %}
+
 {% block title %}
-<link rel="stylesheet" href="{% static 'css/cart.css' %}">
-<title>PowerPulse - Cart</title>
+PowerPulse - Cart
 {% endblock %}
+
+{%block head%}<link rel="stylesheet" href="{% static 'css/cart.css' %}">{%endblock%}
 
 {% block content %}
 <div class="container my-5 py-5">
@@ -43,7 +45,6 @@
         </aside>
         {% else %}
 
-
         <main class="col-md-9">
             <!-- Item -->
             {% for cart_item in cart_items %}
@@ -65,7 +66,7 @@
                         <div class="input-group input-spinner">
                             <div class="input-group-prepend">
                                 <a href="{% url 'remove_cart' cart_item.product.id %}"
-                                    class="btn btn-light rounded-end-0" type="button" id="button-plus">
+                                   class="btn btn-light rounded-end-0" type="button" id="button-plus">
                                     <i class="fa fa-minus"></i>
                                 </a>
                             </div>
@@ -73,14 +74,14 @@
                             {%if cart_item.quantity >= cart_item.product.stock%}
                             <div class="input-group-append">
                                 <a href="{% url 'add_cart' cart_item.product.id %}"
-                                    class="btn btn-light rounded-start-0 disabled" type="button" id="button-minus">
+                                   class="btn btn-light rounded-start-0 disabled" type="button" id="button-minus">
                                     <i class="fa fa-plus"></i>
                                 </a>
                             </div>
                             {%else%}
                             <div class="input-group-append">
                                 <a href="{% url 'add_cart' cart_item.product.id %}"
-                                    class="btn btn-light rounded-start-0" type="button" id="button-minus">
+                                   class="btn btn-light rounded-start-0" type="button" id="button-minus">
                                     <i class="fa fa-plus"></i>
                                 </a>
                             </div>
@@ -97,7 +98,7 @@
                     </div>
                     <div class="col flex-grow-0 text-end">
                         <a href="{% url 'remove_cart_item' cart_item.product.id %}" class="btn btn-light"><i
-                                class="fa fa-times"></i></a>
+                            class="fa fa-times"></i></a>
                     </div>
                 </div>
             </article>

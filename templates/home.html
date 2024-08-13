@@ -2,10 +2,12 @@
 {% load static %}
 {% load humanize %}
 {% block title %}
-<link rel="stylesheet" href="{% static 'css/home.css' %}" />
-<title>PowerPulse - Home</title>
+PowerPulse - Home
 {% endblock %}
 
+{%block head%}
+<link rel="stylesheet" href="{% static 'css/home.css' %}"/>
+{%endblock%}
 {% block content %}
 
 <!-- Main Content Section -->
@@ -14,7 +16,7 @@
     <section class="section-intro">
         <div class="container">
             <div class="intro-banner-wrap">
-                <img class="rounded" src="{% static 'images/banners/1.jpg' %}" alt="Healthy Asian woman doing squats" />
+                <img class="rounded" src="{% static 'images/banners/1.jpg' %}" alt="Healthy Asian woman doing squats"/>
             </div>
         </div>
     </section>
@@ -36,8 +38,8 @@
                         <div class="card card-product">
                             <div class="img-wrap">
                                 <img class="rounded-top" style="width: 220px; height: auto;"
-                                    src="{{ popular_product.images.url }}"
-                                    alt="Optimum Nutrition Whey Protein Gold 5 LBS" />
+                                     src="{{ popular_product.images.url }}"
+                                     alt="Optimum Nutrition Whey Protein Gold 5 LBS"/>
                             </div>
                             <div class="card-body p-2">
                                 <div class="fix-height mb-2">
@@ -48,9 +50,9 @@
                                 <div class="btn-product d-grid">
                                     {% if popular_product.stock == 0 %}
                                     <a href="{% url 'add_cart' popular_product.id %}"
-                                        class="btn btn-outline-danger disabled ">Out of stock</a>
+                                       class="btn btn-outline-danger disabled ">Out of stock</a>
                                     {% else %} <a href="{% url 'add_cart' popular_product.id %}"
-                                        class="btn btn-primary btn-add-to-cart ">Add to
+                                                  class="btn btn-primary btn-add-to-cart ">Add to
                                         cart</a>
                                     {% endif %}
 

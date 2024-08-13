@@ -36,7 +36,6 @@ def login(request):
 
         user = auth.authenticate(email=email, password=password)
         if user is not None:
-            print("Test")
             auth.login(request, user)
             return redirect("home")
         else:

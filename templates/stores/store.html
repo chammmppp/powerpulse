@@ -3,9 +3,12 @@
 {% load static %}
 
 {% block title %}
-<link rel="stylesheet" href="{% static '/css/store.css' %}" />
-<title>PowerPulse - Store</title>
+PowerPulse - Store
 {% endblock title %}
+
+{% block head%}
+<link rel="stylesheet" href="{% static '/css/store.css' %}" />
+{% endblock %}
 
 {% block content %}
 <section class="section-content my-5 py-5">

@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load humanize %}
+
 {% block title %}
-<!-- Setting the title of the page -->
-<title>PowerPulse - Checkout</title>
+PowerPulse - Checkout
+{% endblock %}
+
+{% block head%}
 {% endblock %}
 
 {% block content %}
-
 <!-- Modal Order complete -->
 {%if order_completed %}
 <div class="modal fade show" id="modal-order" tabindex="-1" role="dialog" aria-hidden="true" style="display: block;">
@@ -38,13 +40,13 @@
                                     <!-- Each item in the cart -->
                                     {%for cart_item in cart_items %}
                                     <div class="col-md-6">
-                                        <figure class="itemside mb-4">
-                                            <div class="aside">
+                                        <figure class="itemside mb-4 d-flex">
+                                            <div class="aside me-2">
                                                 <img alt="Image product" src="{{ cart_item.product.images.url }}"
                                                     style="width: 80px; height: 80px;" class="border img-sm">
                                             </div>
                                             <figcaption class="info">
-                                                <p style="height: 50px;overflow: hidden;">
+                                                <p class="m-0 p-0" style="height: 50px;overflow: hidden;">
                                                     {{cart_item.product.product_name}}
                                                 </p>
                                                 <!-- <span class="text-muted">2x = $560 </span> -->
@@ -190,10 +192,20 @@
                                     <dd>Cash</dd>
                                 </dl>
                                 <hr>
-                                <dl class="dlist-align">
+                                <dl class="dlist-align d-flex justify-content-between m-0">
                                     <!-- Display total amount -->
-                                    <dt>Total:</dt>
-                                    <dd class="h5">$300.50</dd>
+                                    <dt>Total Price:</dt>
+                                    <dd>&#3647;{{total|intcomma}}</dd>
+                                </dl>
+                                <dl class="dlist-align d-flex justify-content-between m-0">
+                                    <!-- Display total amount -->
+                                    <dt>Tax:</dt>
+                                    <dd class="text-danger">&#3647;{{tax|intcomma}}</dd>
+                                </dl>
+                                <dl class="dlist-align d-flex justify-content-between m-0">
+                                    <!-- Display total amount -->
+                                    <dt>Grand Total:</dt>
+                                    <dd>&#3647;{{grand_total|intcomma}}</dd>
                                 </dl>
                                 <hr>
                                 <!-- Button to finalize the purchase -->
