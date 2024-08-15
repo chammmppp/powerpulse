@@ -8,6 +8,9 @@ from store.models import Product
 class Order(models.Model):
     user = models.ForeignKey(Account, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
+    payment_proof = models.FileField(
+        upload_to="photos/payment_proof", null=True, blank=True
+    )
 
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
@@ -24,6 +27,9 @@ class Order(models.Model):
 
     total = models.DecimalField(max_digits=10, decimal_places=2)
 
+    def __str__(self):
+        return self.user.email
+
 
 class OrderDetail(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
@@ -31,3 +37,6 @@ class OrderDetail(models.Model):
     quantity = models.PositiveIntegerField(default=1)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def sub_total(self):
+        return self.product.price * self.quantity

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from carts.models import Cart, CartItem
 from order.models import Order, OrderDetail
@@ -40,6 +40,7 @@ def checkout(request):
         district = request.POST.get("district")
         province = request.POST.get("province")
         postal_code = request.POST.get("postal_code")
+        payment_proof = request.POST.get("payment_proof")
 
         order = Order.objects.create(
             first_name=first_name,
@@ -55,6 +56,7 @@ def checkout(request):
             postal_code=postal_code,
             user=request.user,
             total=total,
+            payment_proof=payment_proof,
         )
         order.save()
 
@@ -86,3 +88,26 @@ def checkout(request):
         "grand_total": grand_total,
     }
     return render(request, "checkout.html", context)
+
+
+@login_required(login_url="/login")
+def order_history(request):
+    orders = Order.objects.filter(user=request.user)
+    context = {
+        "orders": orders,
+    }
+    return render(request, "profiles/order_history.html", context)
+
+
+@login_required(login_url="/login")
+def order_detail(request, order_id):
+    order = Order.objects.get(pk=order_id)
+    if order.user == request.user:
+        order_products = OrderDetail.objects.filter(order=order)
+        context = {
+            "order": order,
+            "order_products": order_products,
+        }
+        return render(request, "profiles/order_detail.html", context)
+    else:
+        return redirect("/order_history")

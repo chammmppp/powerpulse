@@ -16,7 +16,3 @@ def my_account(request):
 
 def address(request):
     return render(request, "profiles/address.html")
-
-
-def order_purchases(request):
-    return render(request, "profiles/history_purchase.html")

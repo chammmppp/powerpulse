@@ -1,0 +1,64 @@
+{% extends 'profiles/profile_layout.html' %}
+
+{% load static %}
+
+{% load humanize %}
+
+
+{% block title %}
+PowerPulse - Order purchases
+{% endblock title %}
+
+{% block subcontent %}
+
+
+<aside class="col-md-9">
+
+    {% if orders %}
+    <div class="card px-2">
+        <table class="table table-borderless table-shopping-cart">
+            <thead class="text-muted">
+                <tr class="small text-uppercase">
+                    <th scope="col" style="width:120px; " class="text-muted text-center">รหัสใบสั่งซื้อ</th>
+                    <th scope="col" style="width:120px; " class="text-muted text-center">วันที่สั่งซื้อ</th>
+                    <th scope="col" style="width:120px; " class="text-muted text-center">ราคา</th>
+                    <th scope="col" class="rounded text-muted text-center   ">รายละเอียดสินค้า</th>
+                </tr>
+            </thead>
+
+            {% for order in orders %}
+            <tbody>
+                <tr>
+                    <td class="col text-center">
+                        <span>{{order.id}}</span>
+                    </td>
+                    <td class="col-3">
+                        <div class="price-wrap text-center d-flex flex-column">
+                            <span>{{ order.created_at|date:"d M Y" }}</span>
+                        </div>
+                    </td>
+                    <td class="col-3">
+                        <div class="price-wrap text-center d-flex flex-column">
+                            <var class="price fst-normal">&#3647;{{order.total | intcomma}}</var>
+                            <!-- <small class="text-muted">$315.20 each</small> -->
+                        </div>
+                    </td>
+                    <td class="col-3 text-center">
+                        <a href="{% url 'order_detail' order.id %}">ดูรายละเอียด</a>
+                    </td>
+                </tr>
+                <!-- Repeat for other items -->
+            </tbody>
+            {%endfor%}
+        </table>
+    </div>
+    {% else %}
+    <main class="col-md-9">
+        <h2>ไม่มีประวัติการสั่งซื้อ</h2>
+        <div class="img-empty">
+            <img src="{% static 'images/carts/cart_empty.png'%}" alt="">
+        </div>
+    </main>
+    {% endif %}
+</aside>
+{% endblock subcontent %}

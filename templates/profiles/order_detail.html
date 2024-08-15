@@ -1,0 +1,53 @@
+{% extends 'profiles/profile_layout.html' %}
+
+{% load humanize %}
+
+{% load static %}
+
+
+{% block title %}
+PowerPulse - Order Detail
+{% endblock title %}
+
+
+{% block subcontent %}
+
+<aside class="col-md-9">
+    <div class="card px-2">
+        <table class="table table-borderless table-shopping-cart">
+            <thead class="text-muted">
+                <tr class="small text-uppercase">
+                    <th scope="col" class="rounded text-muted">สิ้นค้า</th>
+                    <th scope="col" style="width:120px; " class="text-muted text-center">จำนวน</th>
+                    <th scope="col" style="width:120px; " class="text-muted text-center">ราคา</th>
+                </tr>
+            </thead>
+
+            {% for order_product in order_products %}
+            <tbody>
+                <tr>
+                    <td class="col-6">
+                        <figure class="itemside d-flex  m-0">
+                            <div class="aside me-2"><img src="{{order_product.product.images.url}}" class="img-sm"
+                                    width="80" height="80"></div>
+                            <figcaption class="info ">
+                                <a href="#" class="title nav-link">{{order_product.product.product_name}}</a>
+                            </figcaption>
+                        </figure>
+                    </td>
+                    <td class="col text-center">
+                        <span>{{order_product.quantity}}</span>
+                    </td>
+                    <td class="col">
+                        <div class="price-wrap text-center d-flex flex-column">
+                            <var class="price fst-normal">&#3647;{{order_product.sub_total | intcomma}}</var>
+                            <small class="text-muted">&#3647;{{order_product.product.price | intcomma}} each</small>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+</aside>
+{%endblock%}
