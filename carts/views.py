@@ -2,6 +2,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, redirect, get_object_or_404
 from store.models import Product
 from .models import Cart, CartItem
+from django.contrib import messages
 
 
 def _cart_id(request):
@@ -22,16 +23,14 @@ def add_cart(request, product_id):
         cart = Cart.objects.create(cart_id=_cart_id(request))
     cart.save()  # save() is a method in Django to save the current sate of the cart object to the database
 
-    quantity = int(request.GET.get("quantity", 1))
-
     try:
         cart_item = CartItem.objects.get(product=product, cart=cart)
-        cart_item.quantity += quantity  # เพิ่ม quantity ตามที่ผู้ใช้เลือก
+        cart_item.quantity += 1  # เพิ่ม quantity ตามที่ผู้ใช้เลือก
         cart_item.save()
     except CartItem.DoesNotExist:
         cart_item = CartItem.objects.create(
             product=product,
-            quantity=quantity,  # ใช้ quantity ที่ผู้ใช้เลือก
+            quantity=1,  # ใช้ quantity ที่ผู้ใช้เลือก
             cart=cart,
         )
         cart_item.save()
