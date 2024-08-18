@@ -2,7 +2,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, redirect, get_object_or_404
 from store.models import Product
 from .models import Cart, CartItem
-from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 
 def _cart_id(request):
@@ -14,6 +14,7 @@ def _cart_id(request):
     return cart
 
 
+@login_required(login_url="/login")
 def add_cart(request, product_id):
     product = Product.objects.get(id=product_id)  # Get the product by unique id
 
@@ -37,6 +38,7 @@ def add_cart(request, product_id):
     return redirect("cart")
 
 
+@login_required(login_url="/login")
 def remove_cart(request, product_id):
     cart = Cart.objects.get(cart_id=_cart_id(request))
     product = get_object_or_404(Product, id=product_id)

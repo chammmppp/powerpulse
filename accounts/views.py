@@ -12,6 +12,11 @@ def signup(request):
         last_name = request.POST.get("last_name")
         email = request.POST.get("email")
         password = request.POST.get("password")
+        conform_password = request.POST.get("conform_password")
+
+        if password != conform_password:
+            messages.warning(request, "Password do not match.")
+            return redirect("signup")
 
         if Account.objects.filter(email=email).exists():
             messages.warning(request, "Email already exists.")
