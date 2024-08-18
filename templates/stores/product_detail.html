@@ -13,12 +13,10 @@ PowerPulse - Product detail
 {% block content %}
 <div class="container my-5 py-5">
     <div class="card">
-        <div class="row no-gutters">
-            <aside class="col-md-6">
-                <div class="img-big-wrap">
-                    <a href="#">
-                        <img class="img-fluid " src="{{ single_product.images.url }}" alt="Product image">
-                    </a>
+        <div class="row no-gutters m-0">
+            <aside class="col-md-6 p-0">
+                <div class="img-big-wrap ">
+                    <img class="img-fluid  rounded-start-2" src="{{ single_product.images.url }}" alt="Product image">
                 </div>
             </aside>
             <main class="col-md-6 border-start">
@@ -35,10 +33,8 @@ PowerPulse - Product detail
                     {%if in_cart %}
                     <a href="#" class="btn btn-primary disabled me-2" id="add-to-cart-button">
                         <span class="text">Added to cart</span>
-                        <i class="bi bi-check2-circle"></i>
                         <a href="{% url 'cart'%}" class="btn btn-success " id="add-to-cart-button">
                             <span class="text">View the cart</span>
-                            <i class="bi bi-eye"></i>
                         </a>
                         {%else%}
                         <a href="{% url 'add_cart' single_product.id %}" class="btn btn-outline-primary"

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 from accounts.models import Account
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -48,3 +49,26 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return redirect("login")
+
+
+def my_account(request):
+    return render(request, "profiles/my_account.html")
+
+
+def userProfile(request):
+    user = request.user
+    context = {"user": user}
+    return render(request, "profiles/my_account.html", context)
+
+
+@login_required(login_url="/login")
+def edit_profile(request):
+    user = request.user
+    if request.method == "POST":
+        print("Edit profile test")
+        user.first_name = request.POST.get("first_name")
+        user.last_name = request.POST.get("last_name")
+        user.phone_number = request.POST.get("phone_number")
+        user.save()
+
+    return redirect("my_account")

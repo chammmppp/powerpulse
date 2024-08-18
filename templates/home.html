@@ -6,7 +6,7 @@ PowerPulse - Home
 {% endblock %}
 
 {%block head%}
-<link rel="stylesheet" href="{% static 'css/home.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/home.css' %}" />
 {%endblock%}
 {% block content %}
 
@@ -16,7 +16,7 @@ PowerPulse - Home
     <section class="section-intro">
         <div class="container">
             <div class="intro-banner-wrap">
-                <img class="rounded" src="{% static 'images/banners/1.jpg' %}" alt="Healthy Asian woman doing squats"/>
+                <img class="rounded" src="{% static 'images/banners/moutain.jpg' %}" />
             </div>
         </div>
     </section>
@@ -37,9 +37,10 @@ PowerPulse - Home
                     <a href="{{ popular_product.get_url }}" class="img-link">
                         <div class="card card-product">
                             <div class="img-wrap">
-                                <img class="rounded-top" style="width: 220px; height: auto;"
-                                     src="{{ popular_product.images.url }}"
-                                     alt="Optimum Nutrition Whey Protein Gold 5 LBS"/>
+                                <img class="image-product rounded-top"
+                                    style="width:100%; max-height: 220px;object-fit: cover;"
+                                    src="{{ popular_product.images.url }}"
+                                    alt="Optimum Nutrition Whey Protein Gold 5 LBS" />
                             </div>
                             <div class="card-body p-2">
                                 <div class="fix-height mb-2">
@@ -50,9 +51,9 @@ PowerPulse - Home
                                 <div class="btn-product d-grid">
                                     {% if popular_product.stock == 0 %}
                                     <a href="{% url 'add_cart' popular_product.id %}"
-                                       class="btn btn-outline-danger disabled ">Out of stock</a>
+                                        class="btn btn-outline-danger disabled ">Out of stock</a>
                                     {% else %} <a href="{% url 'add_cart' popular_product.id %}"
-                                                  class="btn btn-primary btn-add-to-cart ">Add to
+                                        class="btn btn-primary btn-add-to-cart ">Add to
                                         cart</a>
                                     {% endif %}
 
