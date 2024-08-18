@@ -14,23 +14,22 @@ def signup(request):
         password = request.POST.get("password")
         conform_password = request.POST.get("conform_password")
 
-        if password != conform_password:
-            messages.warning(request, "Password do not match.")
-            return redirect("signup")
-
         if Account.objects.filter(email=email).exists():
             messages.warning(request, "Email already exists.")
             return redirect("signup")
-        else:
-            user = Account.objects.create_user(
-                first_name=first_name,
-                last_name=last_name,
-                email=email,
-                password=password,
-            )
-            user.save()
-            messages.success(request, "Account created successfully.")
-            return redirect("login")
+        elif password != conform_password:
+            messages.warning(request, "Password do not match.")
+            return redirect("signup")
+
+        user = Account.objects.create_user(
+            first_name=first_name,
+            last_name=last_name,
+            email=email,
+            password=password,
+        )
+        user.save()
+        messages.success(request, "Account created successfully.")
+        return redirect("login")
     else:
         return render(request, "register/signup.html")
 
