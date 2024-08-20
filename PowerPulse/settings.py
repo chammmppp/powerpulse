@@ -24,7 +24,9 @@ SECRET_KEY = "django-insecure-fhk^8@ib9tf8coupgyis$w$smkq5@5*c0h!5%tuux=vi0z707z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ["devtunnels.ms", "localhost"]
+ALLOWED_HOSTS = ["*"]
+CSRF_TRUSTED_ORIGINS = ["https://l6vhzmxf-8000.asse.devtunnels.ms/"]
 
 # Application definition
 
@@ -110,7 +112,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+# TIME_ZONE = "UTC"
+TIME_ZONE = "Asia/Bangkok"
 
 USE_I18N = True
 
