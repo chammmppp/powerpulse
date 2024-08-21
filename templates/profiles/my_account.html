@@ -15,12 +15,12 @@ PowerPulse - My Account
                 {% csrf_token %}
                 <div class="form-row row">
                     <div class="col-md-6 form-group">
-                        <label>First Name</label>
+                        <label>First name</label>
                         <input type="text" class="form-control" name="first_name" value="{{user.first_name}}" readonly required>
                     </div>
                     <div class="col-md-6 form-group">
-                        <label>Last Name</label>
-                        <input type="text" class="form-control" name="last_name" value="{{user.last_name}}" readonly>
+                        <label>Last name</label>
+                        <input type="text" class="form-control" name="last_name" value="{{user.last_name}}" readonly required>
                     </div>
                     <div class="col-md-6 form-group">
                         <label>Email</label>

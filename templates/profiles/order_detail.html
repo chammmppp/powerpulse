@@ -14,7 +14,7 @@ PowerPulse - Order Detail
 
 <aside class="col-md-9">
     <div class="card px-2">
-        <table class="table table-borderless table-shopping-cart">
+        <table class="table table-borderless table-shopping-cart border-bottom">
             <thead class="text-muted">
                 <tr class="small text-uppercase">
                     <th scope="col" class="rounded text-muted">Products</th>
@@ -36,18 +36,37 @@ PowerPulse - Order Detail
                         </figure>
                     </td>
                     <td class="col text-center">
-                        <span>{{order_product.quantity}}</span>
+                        {{order_product.quantity}}
                     </td>
                     <td class="col">
                         <div class="price-wrap text-center d-flex flex-column">
                             <var class="price fst-normal">&#3647;{{order_product.sub_total | intcomma}}</var>
-                            <small class="text-muted">&#3647;{{order_product.product.price | intcomma}} each</small>
+                            <small class="text-muted">&#3647;{{order_product.product.price | intcomma}} each
                         </div>
                     </td>
                 </tr>
             </tbody>
             {% endfor %}
         </table>
+        <div class="desc-order row">
+            <h6 class="text-muted text-uppercase">Order details</h6>
+            <div class="col-12">
+                <ul class="list-group d-flex flex-column border-bottom rounded-0" style="flex-wrap: wrap; height: 6.5rem; list-style: none;">
+                    <li>Send to: {{order.first_name}} {{order.last_name}}</li>
+                    <li>House No: {{order.house_no}}</li>
+                    <li>Lane: {{order.lane}}</li>
+                    <li>Tel: {{order.phone_number}}</li>
+                    <li>Road: {{order.road}}</li>
+                    <li>Village No: {{order.village_no}}</li>
+                    <li>Sub district: {{order.sub_district}}</li>
+                    <li>District: {{order.district}}</li>
+                    <li>Province: {{order.province}}</li>
+                    <li>Postal code: {{order.postal_code}}</li>
+                </ul>
+            </div>
+            <span class="fw-bold py-2">Total: <var class="fst-normal float-end">{{order.total}}</var></span>
+        </div>
+        </div>
     </div>
 </aside>
 {%endblock%}
