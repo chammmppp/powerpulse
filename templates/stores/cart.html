@@ -14,10 +14,11 @@ PowerPulse - Cart
     <div class="row">
         {% if not cart_items %}
         <main class="col-md-9">
-            <h2>Sorry, you don't have anything in your cart</h2>
-            <div class="img-empty">
+            <h2 class="text-center">Sorry, you don't have anything in your cart</h2>
+            <div class="img-empty text-center">
                 <img src="{% static 'images/carts/cart_empty.png'%}" alt="">
             </div>
+
         </main>
 
         <!--Aside-->
@@ -47,7 +48,7 @@ PowerPulse - Cart
         {% else %}
 
         <main class="col-md-9">
-            <!-- Item -->
+            <!-- Item -->   
             {% for cart_item in cart_items %}
             <article class="card card-body mb-3">
                 <div class="row align-items-center">

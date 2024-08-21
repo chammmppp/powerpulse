@@ -10,8 +10,10 @@
         <aside class="col-md-3">
             <!--   SIDEBAR   -->
             <ul class="list-group list-unstyled nav">
-                <a class="list-group-item" href="{% url 'my_account' %}">My Account</a>
-                <a class="list-group-item" href="{% url 'order_history' %}">Order History</a>
+                <a class="list-group-item {%if request.path == '/my_account/' %}text-primary{% endif %}"
+                    href="{% url 'my_account' %}">My Account</a>
+                <a class="list-group-item {% if request.path == '/order_history/' %}text-primary {%endif%}"
+                    href="{% url 'order_history' %}">Order History</a>
             </ul>
             <br>
             <a style="width: 100%;" class="btn btn-light btn-block" href="{% url 'logout'%}"><i

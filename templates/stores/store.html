@@ -33,11 +33,11 @@ PowerPulse - Store
                                     <div class="filter-content collapse show" id="collapse-aside">
                                         <div class="body">
                                             <ul class="list-menu">
-                                                <a href="{% url 'store' %}" class="link-category">All Products</a>
+                                                <a href="{% url 'store' %}" class="link-category {%if request.path == '/store/' %}text-primary{%endif%}">All Products</a>
                                                 {% for category in links %}
                                                 <li>
                                                     <a href="{{ category.get_url }}"
-                                                        class="link-category">{{category.category_name}}</a>
+                                                        class="link-category {%if  category.get_url  == request.path %}text-primary{%endif%} ">{{category.category_name}}</a>
                                                 </li>
                                                 {% endfor %}
                                             </ul>
@@ -113,11 +113,11 @@ PowerPulse - Store
                     </nav>
                     {% else %}
                     {%if 'search' in request.path %}
-                    <h2>No result found, please try again</h2>
+                    <h2 class="text-center">No result found, please try again</h2>
                     {%else%}
-                    <h2>Sorry, we don't have any items in at stock at moment</h2>
+                    <h2 class="text-center">Sorry, we don't have any items in at stock at moment</h2>
                     {%endif%}
-                    <div class="img-empty">
+                    <div class="img-empty text-center">
                         <img src="{% static 'images/carts/cart_empty.png'%}" alt="">
                     </div>
                     {% endif %}
