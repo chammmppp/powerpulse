@@ -15,6 +15,7 @@ def checkout(request):
     tax_rate = 0.07
     grand_total = 0
     quantity = 0
+    tax = 0
     try:
         cart = Cart.objects.get(cart_id=_cart_id(request))
         cart_items = CartItem.objects.filter(cart=cart)
