@@ -31,41 +31,39 @@ PowerPulse - Checkout
             <form method="POST">
                 {% csrf_token %}
                 <div class="row">
-                    <main class="col-md-8">
+                    <div class="col-md-8">
                         <!-- Card for reviewing the cart items -->
-                        <article class="card mb-4">
+                        <div class="card mb-4">
                             <div class="card-body">
                                 <h4 class="card-title mb-4">Review cart</h4>
                                 <div class="row">
                                     <!-- Each item in the cart -->
                                     {%for cart_item in cart_items %}
                                     <div class="col-md-6">
-                                        <figure class="itemside mb-4 d-flex">
+                                        <div class="itemside mb-4 d-flex">
                                             <div class="aside me-2">
                                                 <img alt="Image product" src="{{ cart_item.product.images.url }}"
                                                     style="width: 80px; height: 80px;" class="border img-sm">
                                             </div>
-                                            <figcaption class="info">
+                                            <div class="info">
                                                 <p class="m-0 p-0" style="height: 50px;overflow: hidden;">
                                                     {{cart_item.product.product_name}}
                                                 </p>
                                                 <!-- <span class="text-muted">2x = $560 </span> -->
                                                 <span class="text-muted">{{cart_item.quantity}}x =
                                                     &#3647;{{cart_item.sub_total | intcomma}}</span>
-                                            </figcaption>
-                                        </figure>
+                                            </div>
+                                        </div>
                                     </div>
                                     {% endfor %}
                                 </div>
                             </div>
-                        </article>
-
+                        </ก>
 
                         <!-- Card for collecting delivery information -->
-                        <article class="card mb-4">
+                        <div class="card mb-4">
                             <div class="card-body">
                                 <h4 class="card-title mb-4">Delivery info</h4>
-
                                 <div class="row">
                                     <!-- Contact info -->
                                     <div class="form-group col-sm-6">
@@ -123,15 +121,15 @@ PowerPulse - Checkout
                                     <div class="form-group col-sm-6">
                                         <!-- Postal code input -->
                                         <label>Postal code: (5 Digits)</label>
-                                        <input type="text" pattern="\d{5,5}" name="postal_code" class="form-control" required>
+                                        <input type="text" pattern="\d{5,5}" name="postal_code" class="form-control"
+                                            required>
                                     </div>
                                 </div>
-
                             </div>
-                        </article>
+                        </div>
 
                         <!-- Accordion for selecting payment method -->
-                        <article class="accordion" id="accordion_pay">
+                        <div class="accordion" id="accordion_pay">
                             <!-- QR code payment option -->
                             <div class="card mb-2">
                                 <header class="card-header">
@@ -158,44 +156,44 @@ PowerPulse - Checkout
                                     </div>
                                 </div>
                             </div>
-                        </article>
-                    </main>
+                        </div>
+                        </ก>
 
-                    <!-- Sidebar for order overview and final actions -->
-                    <aside class="col-md-4">
-                        <div class="card shadow">
-                            <div class="card-body">
-                                <h4 class="mb-3">Overview</h4>
-                                <dl class="dlist-align">
-                                    <!-- Display selected payment method -->
-                                    <dt class="text-muted">Payment method:</dt>
-                                    <dd>QR Code</dd>
-                                </dl>
-                                <hr>
-                                <dl class="dlist-align d-flex justify-content-between m-0">
-                                    <!-- Display total amount -->
-                                    <dt>Total Price:</dt>
-                                    <dd>&#3647;{{total|intcomma}}</dd>
-                                </dl>
-                                <dl class="dlist-align d-flex justify-content-between m-0">
-                                    <!-- Display total amount -->
-                                    <dt>Tax:</dt>
-                                    <dd class="text-danger">&#3647;{{tax|intcomma}}</dd>
-                                </dl>
-                                <dl class="dlist-align d-flex justify-content-between m-0">
-                                    <!-- Display total amount -->
-                                    <dt>Grand Total:</dt>
-                                    <dd>&#3647;{{grand_total|intcomma}}</dd>
-                                </dl>
-                                <hr>
-                                <!-- Button to finalize the purchase -->
-                                <div class="d-grid">
-                                    <button class="d-grid btn btn-primary btn-block">Make purchase</button>
+                        <!-- Sidebar for order overview and final actions -->
+                        <aside class="col-md-4">
+                            <div class="card shadow">
+                                <div class="card-body">
+                                    <h4 class="mb-3">Overview</h4>
+                                    <dl class="dlist-align">
+                                        <!-- Display selected payment method -->
+                                        <dt class="text-muted">Payment method:</dt>
+                                        <dd>QR Code</dd>
+                                    </dl>
+                                    <hr>
+                                    <dl class="dlist-align d-flex justify-content-between m-0">
+                                        <!-- Display total amount -->
+                                        <dt>Total Price:</dt>
+                                        <dd>&#3647;{{total|intcomma}}</dd>
+                                    </dl>
+                                    <dl class="dlist-align d-flex justify-content-between m-0">
+                                        <!-- Display total amount -->
+                                        <dt>Tax:</dt>
+                                        <dd class="text-danger">&#3647;{{tax|intcomma}}</dd>
+                                    </dl>
+                                    <dl class="dlist-align d-flex justify-content-between m-0">
+                                        <!-- Display total amount -->
+                                        <dt>Grand Total:</dt>
+                                        <dd>&#3647;{{grand_total|intcomma}}</dd>
+                                    </dl>
+                                    <hr>
+                                    <!-- Button to finalize the purchase -->
+                                    <div class="d-grid">
+                                        <button class="d-grid btn btn-primary btn-block">Make purchase</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </aside>
-                </div>
+                        </aside>
+                    </div>
             </form>
         </div>
     </section>

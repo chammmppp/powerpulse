@@ -13,13 +13,12 @@ PowerPulse - Cart
 <div class="container my-5 py-5">
     <div class="row">
         {% if not cart_items %}
-        <main class="col-md-9">
+        <div class="col-md-9">
             <h2 class="text-center">Sorry, you don't have anything in your cart</h2>
             <div class="img-empty text-center">
                 <img src="{% static 'images/carts/cart_empty.png'%}" alt="">
             </div>
-
-        </main>
+        </div>
 
         <!--Aside-->
         <aside class="col-md-3">
@@ -47,22 +46,22 @@ PowerPulse - Cart
         </aside>
         {% else %}
 
-        <main class="col-md-9">
-            <!-- Item -->   
+        <div class="col-md-9">
+            <!-- Item -->
             {% for cart_item in cart_items %}
-            <article class="card card-body mb-3">
+            <div class="card card-body mb-3">
                 <div class="row align-items-center">
                     <div class="col-md-6">
-                        <figure class="itemside d-flex my-0">
+                        <div class="itemside d-flex my-0">
                             <div class="aside">
                                 <img alt="Product image" src="{{ cart_item.product.images.url }}" class="border img-sm">
                             </div>
-                            <figcaption class="info mx-3 d-flex flex-column">
+                            <div class="info mx-3 d-flex flex-column">
                                 <a href="{{cart_item.product.get_url }}" class="title">
                                     {{cart_item.product.product_name}}</a>
                                 <!-- <span class="text-muted small">{{cart_item.product.slug}}</span> -->
-                            </figcaption>
-                        </figure>
+                            </div>
+                        </div>
                     </div>
                     <div class="col">
                         <div class="input-group input-spinner">
@@ -103,11 +102,11 @@ PowerPulse - Cart
                                 class="fa fa-times"></i></a>
                     </div>
                 </div>
-            </article>
+            </div>
             {% endfor %}
 
             <!-- End item -->
-        </main>
+        </div>
 
         <aside class="col-md-3">
             <div class="card">

@@ -39,18 +39,18 @@ class MyAccountManager(BaseUserManager):
 
 # Account model
 class Account(AbstractBaseUser):
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-    email = models.EmailField(max_length=100, unique=True)
-    phone_number = models.CharField(max_length=10, blank=True, null=True)
+    first_name = models.CharField(max_length=50)  # Property
+    last_name = models.CharField(max_length=50)  # Property
+    email = models.EmailField(max_length=100, unique=True)  # Property
+    phone_number = models.CharField(max_length=10, blank=True, null=True)  # Property
 
     # Required
-    date_joined = models.DateTimeField(auto_now_add=True)
-    last_login = models.DateTimeField(auto_now=True, null=False)
-    is_admin = models.BooleanField(default=False)
-    is_staff = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=True)
-    is_superuser = models.BooleanField(default=False)
+    date_joined = models.DateTimeField(auto_now_add=True)  # Property
+    last_login = models.DateTimeField(auto_now=True, null=False)  # Property
+    is_admin = models.BooleanField(default=False)  # Property
+    is_staff = models.BooleanField(default=False)  # Property
+    is_active = models.BooleanField(default=True)  # Property
+    is_superuser = models.BooleanField(default=False)  # Property
 
     USERNAME_FIELD = (
         "email"  # This attribute will be used as unique identifier for the user
@@ -60,7 +60,7 @@ class Account(AbstractBaseUser):
         "last_name",
     ]  # This attribute will be prompted during the creation of a superuser
 
-    objects = MyAccountManager()
+    objects = MyAccountManager()  # Object of the class Account
 
     def __str__(self):
         return self.email
