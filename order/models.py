@@ -10,7 +10,6 @@ from store.models import Product
 class Order(models.Model):
     user = models.ForeignKey(Account, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
-    # created_at = models.DateTimeField(default=timezone.now)
     payment_proof = models.FileField(
         upload_to="photos/payment_proof", null=True, blank=True
     )

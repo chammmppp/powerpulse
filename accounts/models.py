@@ -16,7 +16,7 @@ class MyAccountManager(BaseUserManager):
             last_name=last_name,
         )
 
-        user.set_password(password)  # Set password
+        user.set_password(password)  # hash รหัสผ่านก่อนที่จะบันทึกลงฐานข้อมูล
         user.save(using=self._db)
         return user
 
