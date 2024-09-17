@@ -40,14 +40,12 @@ PowerPulse - Order purchases
                     <td class="col-3">
                         <div class="price-wrap text-center d-flex flex-column">
                             <var class="price fst-normal">&#3647;{{order.total | intcomma}}</var>
-                            <!-- <small class="text-muted">$315.20 each</small> -->
                         </div>
                     </td>
                     <td class="col-3 text-center">
                         <a href="{% url 'order_detail' order.id %}" style="text-decoration: none;">View Detail</a>
                     </td>
                 </tr>
-                <!-- Repeat for other items -->
             </tbody>
             {%endfor%}
         </table>

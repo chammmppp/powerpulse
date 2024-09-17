@@ -65,7 +65,7 @@ def userProfile(request):
     return render(request, "profiles/my_account.html", context)
 
 
-@login_required(login_url="/login") # To check if the user doesn't login -> If user doesn't login it'll take the user to login page
+@login_required(login_url="/login")
 def edit_profile(request):
     user = request.user
     if request.method == "POST":

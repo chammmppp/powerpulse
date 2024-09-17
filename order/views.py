@@ -23,7 +23,7 @@ def checkout(request):
         for item in cart_items:
             total += item.product.price * item.quantity
             quantity += item.quantity
-            tax = round(tax_rate * total, 2)  # คำนวณภาษี
+            tax = round(tax_rate * total, 2) 
             grand_total = total + tax
 
     except ObjectDoesNotExist:
@@ -63,20 +63,20 @@ def checkout(request):
 
         for item in cart_items:
             detail_order = OrderDetail.objects.create(
-                product=item.product,  # Store Product object
+                product=item.product, 
                 quantity=item.quantity,
                 price=item.product.price,
                 order=order,
             )
             detail_order.save()
 
-            # Deduct stock
+            
             product = Product.objects.get(pk=item.product.id)
             product.stock -= item.quantity
             product.save()
             item.delete()
 
-        # cart.delete()
+        
         cart_items.delete()
         order_completed = True
         return render(request, "checkout.html", {"order_completed": order_completed})

@@ -20,7 +20,6 @@ PowerPulse - Cart
             </div>
         </div>
 
-        <!--Aside-->
         <aside class="col-md-3">
             <div class="card">
                 <div class="card-body">
@@ -47,7 +46,7 @@ PowerPulse - Cart
         {% else %}
 
         <div class="col-md-9">
-            <!-- Item -->
+
             {% for cart_item in cart_items %}
             <div class="card card-body mb-3">
                 <div class="row align-items-center">
@@ -59,7 +58,6 @@ PowerPulse - Cart
                             <div class="info mx-3 d-flex flex-column">
                                 <a href="{{cart_item.product.get_url }}" class="title">
                                     {{cart_item.product.product_name}}</a>
-                                <!-- <span class="text-muted small">{{cart_item.product.slug}}</span> -->
                             </div>
                         </div>
                     </div>
@@ -104,8 +102,6 @@ PowerPulse - Cart
                 </div>
             </div>
             {% endfor %}
-
-            <!-- End item -->
         </div>
 
         <aside class="col-md-3">

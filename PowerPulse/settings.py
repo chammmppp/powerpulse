@@ -129,7 +129,6 @@ STATICFILES_DIRS = [
 ]
 
 # Media files configuration
-# To make admin save the image you've to do this
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 

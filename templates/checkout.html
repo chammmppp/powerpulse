@@ -10,7 +10,7 @@ PowerPulse - Checkout
 {% endblock %}
 
 {% block content %}
-<!-- Modal Order complete -->
+
 {%if order_completed %}
 <div class="modal fade show" id="modal-order" tabindex="-1" role="dialog" aria-hidden="true" style="display: block;">
     <div class="modal-dialog">
@@ -24,7 +24,6 @@ PowerPulse - Checkout
 </div>
 {%endif%}
 
-<!-- Main container for the checkout page content -->
 <div class="container my-5 py-5">
     <section class="section-content padding-y bg">
         <div class="container">
@@ -32,12 +31,12 @@ PowerPulse - Checkout
                 {% csrf_token %}
                 <div class="row">
                     <main class="col-md-8">
-                        <!-- Card for reviewing the cart items -->
+                        
                         <article class="card mb-4">
                             <div class="card-body">
                                 <h4 class="card-title mb-4">Review cart</h4>
                                 <div class="row">
-                                    <!-- Each item in the cart -->
+                                    
                                     {%for cart_item in cart_items %}
                                     <div class="col-md-6">
                                         <figure class="itemside mb-4 d-flex">
@@ -49,7 +48,7 @@ PowerPulse - Checkout
                                                 <p class="m-0 p-0" style="height: 50px;overflow: hidden;">
                                                     {{cart_item.product.product_name}}
                                                 </p>
-                                                <!-- <span class="text-muted">2x = $560 </span> -->
+                                                
                                                 <span class="text-muted">{{cart_item.quantity}}x =
                                                     &#3647;{{cart_item.sub_total | intcomma}}</span>
                                             </figcaption>
@@ -61,67 +60,66 @@ PowerPulse - Checkout
                         </article>
 
 
-                        <!-- Card for collecting delivery information -->
                         <article class="card mb-4">
                             <div class="card-body">
                                 <h4 class="card-title mb-4">Delivery info</h4>
 
                                 <div class="row">
-                                    <!-- Contact info -->
+                                    
                                     <div class="form-group col-sm-6">
-                                        <!-- First name input -->
+                                        
                                         <label>First name</label>
                                         <input type="text" name="first_name" class="form-control" required>
                                     </div>
                                     <div class="form-group col-sm-6">
-                                        <!-- Last name input -->
+                                        
                                         <label>Last name</label>
                                         <input type="text" name="last_name" class="form-control" required>
                                     </div>
                                     <div class="form-group col-sm-6">
-                                        <!-- Phone number input -->
+                                        
                                         <label>Phone</label>
                                         <input type="text" name="phone" class="form-control" required>
                                     </div>
 
-                                    <!-- Address info-->
+                                    
                                     <div class="form-group col-sm-6">
-                                        <!-- House number input -->
+                                        
                                         <label>House No</label>
                                         <input type="text" name="house_no" class="form-control" required>
                                     </div>
                                     <div class="form-group col-sm-6">
-                                        <!-- Village number input -->
+                                        
                                         <label>Village No</label>
                                         <input type="text" name="village_no" class="form-control" required>
                                     </div>
                                     <div class="form-group col-sm-6">
-                                        <!-- Lane input -->
+                                        
                                         <label>Lane</label>
                                         <input type="text" name="lane" class="form-control" required>
                                     </div>
                                     <div class="form-group col-sm-6">
-                                        <!-- Road input -->
+                                        
                                         <label>Road</label>
                                         <input type="text" name="road" class="form-control" required>
                                     </div>
                                     <div class="form-group col-sm-6">
-                                        <!-- Sub-district/Sub-area input -->
+                                        
                                         <label>Sub-district/Sub-area</label>
                                         <input type="text" name="sub_district" class="form-control" required>
                                     </div>
                                     <div class="form-group col-sm-6">
-                                        <!-- District/Area input -->
+                                        
                                         <label>District/Area</label>
                                         <input type="text" name="district" class="form-control" required>
                                     </div>
                                     <div class="form-group col-sm-6">
-                                        <!-- Province selection -->
+                                        
                                         <label>Province</label>
                                         <input type="text" name="province" class="form-control" required>
                                     </div>
                                     <div class="form-group col-sm-6">
-                                        <!-- Postal code input -->
+                                        
                                         <label>Postal code: (5 Digits)</label>
                                         <input type="text" pattern="\d{5,5}" name="postal_code" class="form-control" required>
                                     </div>
@@ -130,9 +128,9 @@ PowerPulse - Checkout
                             </div>
                         </article>
 
-                        <!-- Accordion for selecting payment method -->
+                        
                         <article class="accordion" id="accordion_pay">
-                            <!-- QR code payment option -->
+                            
                             <div class="card mb-2">
                                 <header class="card-header">
                                     <img alt="Image QR code" src="{% static 'images/payments/1200x630wa.png' %}"
@@ -161,34 +159,28 @@ PowerPulse - Checkout
                         </article>
                     </main>
 
-                    <!-- Sidebar for order overview and final actions -->
                     <aside class="col-md-4">
                         <div class="card shadow">
                             <div class="card-body">
                                 <h4 class="mb-3">Overview</h4>
                                 <dl class="dlist-align">
-                                    <!-- Display selected payment method -->
                                     <dt class="text-muted">Payment method:</dt>
                                     <dd>QR Code</dd>
                                 </dl>
                                 <hr>
                                 <dl class="dlist-align d-flex justify-content-between m-0">
-                                    <!-- Display total amount -->
                                     <dt>Total Price:</dt>
                                     <dd>&#3647;{{total|intcomma}}</dd>
                                 </dl>
                                 <dl class="dlist-align d-flex justify-content-between m-0">
-                                    <!-- Display total amount -->
                                     <dt>Tax:</dt>
                                     <dd class="text-danger">&#3647;{{tax|intcomma}}</dd>
                                 </dl>
                                 <dl class="dlist-align d-flex justify-content-between m-0">
-                                    <!-- Display total amount -->
                                     <dt>Grand Total:</dt>
                                     <dd>&#3647;{{grand_total|intcomma}}</dd>
                                 </dl>
                                 <hr>
-                                <!-- Button to finalize the purchase -->
                                 <div class="d-grid">
                                     <button class="d-grid btn btn-primary btn-block">Make purchase</button>
                                 </div>

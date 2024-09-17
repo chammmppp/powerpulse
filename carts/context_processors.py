@@ -1,7 +1,7 @@
 from .models import Cart, CartItem
 from .views import _cart_id
 
-#นับจำนวนสินค้าในตะกร้าของผู้ใช้
+
 def counter(request):
     cart_count = 0
     if "admin" in request.path:

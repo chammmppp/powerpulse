@@ -8,7 +8,6 @@
 <div class="container my-5 py-5">
     <div class="row">
         <aside class="col-md-3">
-            <!--   SIDEBAR   -->
             <ul class="list-group list-unstyled nav">
                 <a class="list-group-item {%if request.path == '/my_account/' %}text-primary{% endif %}"
                     href="{% url 'my_account' %}">My Account</a>
@@ -19,7 +18,6 @@
             <a style="width: 100%;" class="btn btn-light btn-block" href="{% url 'logout'%}"><i
                     class="fa fa-power-off"></i>
                 <span class="text">Log out</span> </a>
-            <!--   SIDEBAR .//END   -->
         </aside>
         {% block subcontent%}
         {% endblock subcontent%}

@@ -16,10 +16,10 @@ def store(request, category_slug=None):
     if category_slug is not None:
         categories = get_object_or_404(
             Category, slug=category_slug
-        )  # Get an object if not exist it's will be raises 404
+        )
         products = Product.objects.filter(
             category=categories, is_available=True
-        )  # Get object products that exist on database
+        )
         paginator = Paginator(products, 8)
         page = request.GET.get("page")
         paged_products = paginator.get_page(page)
@@ -54,7 +54,6 @@ def product_detail(request, category_slug, product_slug):
 
 
 def search(request):
-    # products = Product.objects.all().filter(is_available=True) #If doesn't type any words in search box this statement will take the user to all products
     if "keyword" in request.GET:
         keyword = request.GET["keyword"]
         if keyword:
